@@ -1,4 +1,4 @@
-FROM node:22-slim
+FROM node:22
 
 WORKDIR /app
 
@@ -6,7 +6,6 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-
 RUN npm run build
 
 RUN cp node_modules/sql.js/dist/sql-wasm.wasm .output/server/_libs/sql-wasm.wasm
