@@ -6,7 +6,10 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
+
 RUN npm run build
+
+RUN cp node_modules/sql.js/dist/sql-wasm.wasm .output/server/_libs/sql-wasm.wasm
 
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
