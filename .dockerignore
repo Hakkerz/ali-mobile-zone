@@ -1,0 +1,11 @@
+node_modules
+.git
+.output
+.nitro
+.vinxi
+data/
+*.local
+.env
+.gitignore
+*.md
+start-server.bat
