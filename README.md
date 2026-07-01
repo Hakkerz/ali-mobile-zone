@@ -13,3 +13,5 @@ license: mit
 Pakistan's #1 Mobile Accessories Store — chargers, headphones, earbuds and more.
 
 Built with TanStack Start + React + Tailwind CSS.
+
+
