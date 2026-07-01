@@ -1,8 +1,8 @@
 ---
 title: Ali Mobile Zone
 emoji: 🛍️
-colorFrom: navy
-colorTo: gold
+colorFrom: indigo
+colorTo: yellow
 sdk: docker
 pinned: false
 license: mit
