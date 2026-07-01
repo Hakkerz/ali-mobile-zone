@@ -32,10 +32,13 @@
   --color-navy-light: var(--navy-light);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
-  --color-whatsapp: var(--whatsapp);
-  --color-whatsapp-dark: var(--whatsapp-dark);
-  --color-neon: var(--neon);
-  --color-neon-glow: var(--neon-glow);
+  --color-whatsapp: var(--blue);
+  --color-whatsapp-dark: var(--blue-dark);
+  --color-neon: var(--blue);
+  --color-neon-glow: var(--blue-dark);
+  --color-blue: var(--blue);
+  --color-blue-dark: var(--blue-dark);
+  --color-blue-light: var(--blue-light);
   --color-glass: var(--glass);
   --color-glass-border: var(--glass-border);
   --shadow-card: 0 4px 30px color-mix(in oklab, var(--neon) 10%, transparent);
@@ -52,10 +55,13 @@
   --navy-light: oklch(0.85 0.03 260);
   --gold: oklch(0.82 0.17 80);
   --gold-light: oklch(0.9 0.13 85);
-  --whatsapp: oklch(0.72 0.18 145);
-  --whatsapp-dark: oklch(0.62 0.18 145);
-  --neon: oklch(0.78 0.2 150);
-  --neon-glow: oklch(0.72 0.22 150);
+  --whatsapp: var(--blue);
+  --whatsapp-dark: var(--blue-dark);
+  --neon: var(--blue);
+  --neon-glow: var(--blue-dark);
+  --blue: oklch(0.65 0.22 260);
+  --blue-dark: oklch(0.52 0.2 260);
+  --blue-light: oklch(0.78 0.14 250);
 
   --background: oklch(0.08 0.02 260);
   --foreground: oklch(0.92 0.01 260);
@@ -63,13 +69,13 @@
   --card-foreground: oklch(0.92 0.01 260);
   --popover: var(--glass);
   --popover-foreground: oklch(0.92 0.01 260);
-  --primary: oklch(0.72 0.18 145);
+  --primary: var(--blue);
   --primary-foreground: oklch(0.08 0.02 260);
   --secondary: oklch(0.14 0.03 260);
   --secondary-foreground: oklch(0.92 0.01 260);
   --muted: oklch(0.14 0.03 260);
   --muted-foreground: oklch(0.55 0.03 260);
-  --accent: var(--gold);
+  --accent: var(--blue-light);
   --accent-foreground: oklch(0.08 0.02 260);
   --destructive: oklch(0.6 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
@@ -90,8 +96,8 @@
     color: var(--color-foreground);
     font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, var(--neon) 6%, transparent) 0%, transparent 100%),
-      radial-gradient(ellipse 40% 30% at 80% 20%, color-mix(in oklab, var(--gold) 4%, transparent) 0%, transparent 100%);
+      radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, var(--blue) 8%, transparent) 0%, transparent 100%),
+      radial-gradient(ellipse 40% 30% at 80% 20%, color-mix(in oklab, var(--blue-light) 6%, transparent) 0%, transparent 100%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4 {
@@ -157,7 +163,7 @@
   text-shadow: 0 0 10px color-mix(in oklab, var(--neon) 50%, transparent);
 }
 .text-gradient {
-  background: linear-gradient(135deg, var(--neon), var(--gold));
+  background: linear-gradient(135deg, var(--blue), var(--blue-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -386,7 +392,7 @@
   100% { background-position: 200% 0; }
 }
 .shimmer-text {
-  background: linear-gradient(90deg, var(--foreground) 0%, var(--neon) 50%, var(--gold) 100%);
+  background: linear-gradient(90deg, var(--foreground) 0%, var(--blue) 50%, var(--gold) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

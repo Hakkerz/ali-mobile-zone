@@ -11,16 +11,16 @@ function ChargerCard() {
       <svg viewBox="0 0 60 80" className="relative h-24 w-24 animate-bolt-pulse" aria-hidden>
         <path
           d="M34 4 L10 44 L26 44 L22 76 L50 32 L34 32 Z"
-          fill="#22c55e"
-          stroke="#4ade80"
+          fill="#3B82F6"
+          stroke="#60A5FA"
           strokeWidth="1.5"
         />
       </svg>
       <svg viewBox="0 0 100 60" className="absolute bottom-0 h-12 w-full" aria-hidden>
         <path
           d="M10 55 Q30 30 50 40 T90 10"
-          stroke="#22c55e"
-          strokeWidth="2.5"
+            stroke="#3B82F6"
+            strokeWidth="2.5"
           fill="none"
           strokeLinecap="round"
           strokeDasharray="120"
@@ -46,8 +46,8 @@ function EarbudsCard() {
           style={{ animationDelay: "1.2s" }}
         />
         <svg viewBox="0 0 60 80" className="relative h-14 w-14" aria-hidden>
-          <ellipse cx="30" cy="22" rx="18" ry="20" fill="#1a1a2e" stroke="#22c55e" strokeWidth="1.5" />
-          <rect x="25" y="38" width="10" height="36" rx="5" fill="#1a1a2e" stroke="#22c55e" strokeWidth="1.5" />
+          <ellipse cx="30" cy="22" rx="18" ry="20" fill="#1a1a2e" stroke="#3B82F6" strokeWidth="1.5" />
+          <rect x="25" y="38" width="10" height="36" rx="5" fill="#1a1a2e" stroke="#3B82F6" strokeWidth="1.5" />
         </svg>
       </div>
       <div className="absolute bottom-2 right-2">
@@ -64,8 +64,8 @@ function EarbudsCard() {
           style={{ animationDelay: "1.5s" }}
         />
         <svg viewBox="0 0 60 80" className="relative h-14 w-14 scale-x-[-1]" aria-hidden>
-          <ellipse cx="30" cy="22" rx="18" ry="20" fill="#1a1a2e" stroke="#22c55e" strokeWidth="1.5" />
-          <rect x="25" y="38" width="10" height="36" rx="5" fill="#1a1a2e" stroke="#22c55e" strokeWidth="1.5" />
+          <ellipse cx="30" cy="22" rx="18" ry="20" fill="#1a1a2e" stroke="#3B82F6" strokeWidth="1.5" />
+          <rect x="25" y="38" width="10" height="36" rx="5" fill="#1a1a2e" stroke="#3B82F6" strokeWidth="1.5" />
         </svg>
       </div>
     </div>

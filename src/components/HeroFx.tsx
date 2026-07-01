@@ -24,7 +24,7 @@ function Particles() {
             left: `${b.left}%`,
             width: b.size,
             height: b.size,
-            background: b.gold ? "#FFB300" : "#0A1931",
+              background: b.gold ? "#60A5FA" : "#1E3A5F",
             ["--bubble-dur" as never]: `${b.dur}s`,
             ["--bubble-op" as never]: b.op,
             animationDelay: `${b.delay}s`,
@@ -45,11 +45,11 @@ function FloatingCover() {
         <svg width="90" height="160" viewBox="0 0 90 160" fill="none">
           <defs>
             <linearGradient id="cv" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stopColor="#0A1931" />
-              <stop offset="100%" stopColor="#1a2f5a" />
+              <stop offset="0%" stopColor="#1E3A5F" />
+              <stop offset="100%" stopColor="#2B5EA7" />
             </linearGradient>
             <linearGradient id="shine" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
+              <stop offset="0%" stopColor="rgba(255,255,255,0.4)" />
               <stop offset="100%" stopColor="rgba(255,255,255,0)" />
             </linearGradient>
           </defs>
@@ -60,11 +60,11 @@ function FloatingCover() {
             height="150"
             rx="14"
             fill="url(#cv)"
-            stroke="#FFB300"
+            stroke="#60A5FA"
             strokeWidth="2"
           />
           <rect x="12" y="10" width="20" height="140" rx="8" fill="url(#shine)" opacity="0.6" />
-          <circle cx="45" cy="22" r="4" fill="#FFB300" opacity="0.7" />
+          <circle cx="45" cy="22" r="4" fill="#60A5FA" opacity="0.8" />
         </svg>
       </div>
     </div>
@@ -89,11 +89,11 @@ function FloatingCharger() {
             stroke="#cbd5e1"
             strokeWidth="2"
           />
-          <path d="M48 25 L40 50 L52 50 L44 70 L60 42 L48 42 Z" fill="#FFB300" />
+          <path d="M48 25 L40 50 L52 50 L44 70 L60 42 L48 42 Z" fill="#3B82F6" />
           <rect x="42" y="78" width="16" height="8" fill="#9ca3af" />
           <path
             d="M50 86 Q70 110 50 130 Q30 150 60 160"
-            stroke="#1f2937"
+            stroke="#60A5FA"
             strokeWidth="3"
             fill="none"
             strokeLinecap="round"
@@ -107,16 +107,16 @@ function FloatingCharger() {
 function Earbud({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 60 80" className={className} fill="none" aria-hidden>
-      <ellipse cx="30" cy="22" rx="18" ry="20" fill="#ffffff" stroke="#0A1931" strokeWidth="1" />
-      <circle cx="30" cy="22" r="6" fill="#cbd5e1" />
+      <ellipse cx="30" cy="22" rx="18" ry="20" fill="#1E3A5F" stroke="#60A5FA" strokeWidth="1" />
+      <circle cx="30" cy="22" r="6" fill="#3B82F6" />
       <rect
         x="25"
         y="38"
         width="10"
         height="36"
         rx="5"
-        fill="#ffffff"
-        stroke="#0A1931"
+        fill="#1E3A5F"
+        stroke="#60A5FA"
         strokeWidth="1"
       />
     </svg>
