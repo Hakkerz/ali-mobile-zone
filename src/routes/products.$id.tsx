@@ -174,26 +174,26 @@ function ProductDetail() {
   const savings = originalPrice - product.price;
 
   return (
-    <div className="bg-gradient-to-b from-secondary/40 to-white">
+    <div className="bg-gradient-to-b from-secondary/40 to-background">
       <div className="mx-auto max-w-7xl px-4 py-6">
         {/* Breadcrumb */}
         <nav className="mb-6 flex items-center gap-1 text-xs text-muted-foreground">
-          <Link to="/" className="hover:text-navy">
+          <Link to="/" className="hover:text-foreground">
             Home
           </Link>
           <ChevronRight className="h-3 w-3" />
-          <Link to="/products" className="hover:text-navy">
+          <Link to="/products" className="hover:text-foreground">
             Products
           </Link>
           <ChevronRight className="h-3 w-3" />
-          <span className="line-clamp-1 text-navy">{product.name}</span>
+          <span className="line-clamp-1 text-foreground">{product.name}</span>
         </nav>
 
         <div className="grid gap-8 md:grid-cols-2">
           {/* LEFT — Image */}
           <div>
-            <div className="group relative overflow-hidden rounded-2xl border bg-white shadow-[var(--shadow-card)]">
-              <span className="absolute left-4 top-4 z-10 rounded-full bg-gold px-3 py-1 text-xs font-extrabold text-navy shadow">
+            <div className="group relative overflow-hidden rounded-2xl border border-glass-border bg-background/50">
+              <span className="absolute left-4 top-4 z-10 rounded-full bg-gold px-3 py-1 text-xs font-extrabold text-background shadow">
                 10% OFF
               </span>
               <button
@@ -205,7 +205,7 @@ function ProductDetail() {
                 aria-label="Wishlist"
               >
                 <Heart
-                  className={`h-4 w-4 ${wished ? "fill-destructive text-destructive" : "text-navy"}`}
+                  className={`h-4 w-4 ${wished ? "fill-destructive text-destructive" : "text-foreground"}`}
                 />
               </button>
               <div className="aspect-square overflow-hidden">
@@ -218,7 +218,7 @@ function ProductDetail() {
             </div>
             {/* Thumbnail strip (single image) */}
             <div className="mt-3 flex gap-2">
-              <div className="h-20 w-20 overflow-hidden rounded-lg border-2 border-gold bg-white">
+              <div className="h-20 w-20 overflow-hidden rounded-lg border-2 border-gold bg-background/50">
                 <ProductImage
                   src={product.image}
                   alt={product.name}
@@ -230,10 +230,10 @@ function ProductDetail() {
 
           {/* RIGHT — Info */}
           <div>
-            <span className="inline-block rounded-full bg-navy/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-navy">
+            <span className="inline-block rounded-full bg-foreground/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-foreground">
               {product.brand}
             </span>
-            <h1 className="mt-3 text-3xl font-extrabold leading-tight text-navy md:text-4xl">
+            <h1 className="mt-3 text-3xl font-extrabold leading-tight text-foreground md:text-4xl">
               {product.name}
             </h1>
 
@@ -245,13 +245,13 @@ function ProductDetail() {
                 ))}
                 <Star className="h-4 w-4 fill-gold/50 text-gold" />
               </div>
-              <span className="text-sm font-medium text-navy">4.5/5</span>
+              <span className="text-sm font-medium text-foreground">4.5/5</span>
               <span className="text-xs text-muted-foreground">(124 reviews)</span>
             </div>
 
             {/* Price */}
             <div className="mt-5 flex flex-wrap items-baseline gap-3">
-              <span className="text-4xl font-extrabold text-navy">
+              <span className="text-4xl font-extrabold text-foreground">
                 {formatPrice(product.price)}
               </span>
               <span className="text-lg text-muted-foreground line-through">
@@ -276,7 +276,7 @@ function ProductDetail() {
 
             {/* Features */}
             <div className="mt-5">
-              <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-navy">
+              <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-foreground">
                 Key Features
               </h3>
               <ul className="space-y-1.5">
@@ -301,7 +301,7 @@ function ProductDetail() {
               ].map((b, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 rounded-lg bg-whatsapp/8 border border-whatsapp/20 px-3 py-2 text-xs font-medium text-navy"
+                  className="flex items-center gap-2 rounded-lg bg-whatsapp/8 border border-whatsapp/20 px-3 py-2 text-xs font-medium text-foreground"
                 >
                   <b.icon className="h-4 w-4 shrink-0 text-whatsapp-dark" />
                   <span>{b.text}</span>
@@ -311,8 +311,8 @@ function ProductDetail() {
 
             {/* Quantity */}
             <div className="mt-6 flex items-center gap-4">
-              <span className="text-sm font-bold text-navy">Quantity:</span>
-              <div className="inline-flex items-center rounded-lg border bg-white">
+              <span className="text-sm font-bold text-foreground">Quantity:</span>
+              <div className="inline-flex items-center rounded-lg border border-glass-border bg-background/50">
                 <button
                   onClick={() => setQty(Math.max(1, qty - 1))}
                   className="grid h-10 w-10 place-items-center hover:bg-secondary"
@@ -345,14 +345,14 @@ function ProductDetail() {
                 href={waProduct(product, qty)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-navy px-5 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-navy-light hover:scale-[1.02]"
+                className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-whatsapp px-5 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-whatsapp-dark hover:scale-[1.02]"
               >
                 <MessageCircle className="h-4 w-4" /> Order on WhatsApp
               </a>
             </div>
 
             {/* Guarantee strip */}
-            <div className="mt-6 grid grid-cols-2 gap-3 rounded-xl border bg-white p-4 sm:grid-cols-4">
+            <div className="mt-6 grid grid-cols-2 gap-3 rounded-xl border border-glass-border bg-background/50 p-4 sm:grid-cols-4">
               {[
                 { icon: Lock, label: "Secure Payment" },
                 { icon: Zap, label: "Fast Delivery" },
@@ -361,7 +361,7 @@ function ProductDetail() {
               ].map((g, i) => (
                 <div key={i} className="flex flex-col items-center gap-1 text-center">
                   <g.icon className="h-5 w-5 text-gold" />
-                  <span className="text-[11px] font-bold uppercase tracking-wide text-navy">
+                  <span className="text-[11px] font-bold uppercase tracking-wide text-foreground">
                     {g.label}
                   </span>
                 </div>
@@ -373,7 +373,7 @@ function ProductDetail() {
         {/* Related */}
         {related.length > 0 && (
           <section className="mt-16">
-            <h2 className="mb-6 text-2xl font-extrabold text-navy">You May Also Like</h2>
+            <h2 className="mb-6 text-2xl font-extrabold text-foreground">You May Also Like</h2>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {related.map((p) => (
                 <ProductCard key={p.id} product={p} />

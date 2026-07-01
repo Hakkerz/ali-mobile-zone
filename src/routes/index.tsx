@@ -14,6 +14,8 @@ import {
   Zap,
   ArrowRight,
   Sparkles,
+  Globe,
+  Cpu,
 } from "lucide-react";
 import { toast } from "sonner";
 import { ProductCard } from "@/components/ProductCard";
@@ -70,29 +72,30 @@ function Hero() {
   }, []);
   const s = SLIDES[i];
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-navy via-navy to-navy-light text-white">
+    <section className="relative overflow-hidden bg-background">
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-30"
         style={{
           background:
-            "radial-gradient(circle at 20% 20%, var(--gold) 0%, transparent 40%), radial-gradient(circle at 80% 80%, var(--gold) 0%, transparent 40%)",
+            "radial-gradient(ellipse 60% 50% at 20% 20%, color-mix(in oklab, var(--neon) 15%, transparent) 0%, transparent 100%), radial-gradient(ellipse 50% 40% at 80% 80%, color-mix(in oklab, var(--gold) 10%, transparent) 0%, transparent 100%), radial-gradient(ellipse 40% 30% at 50% 50%, color-mix(in oklab, var(--whatsapp) 8%, transparent) 0%, transparent 100%)",
         }}
       />
+      <div className="absolute inset-0 bg-grid opacity-[0.03]" />
       <HeroFx />
       <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-4 py-16 md:grid-cols-2 md:py-24">
         <div key={i} className="animate-fade-up">
-          <div className="mb-3 inline-block rounded-full bg-gold/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold">
-            {s.accent}
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-neon/30 glass-card px-3 py-1 text-xs font-bold uppercase tracking-widest text-neon">
+            <Sparkles className="h-3 w-3" /> {s.accent}
           </div>
           <h1 className="text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
-            {s.title}
+            <span className="text-gradient">{s.title}</span>
           </h1>
-          <p className="mt-4 max-w-md text-base text-white/80">{s.sub}</p>
+          <p className="mt-4 max-w-md text-base text-muted-foreground">{s.sub}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             {s.to ? (
               <Link
                 to={s.to}
-                className="rounded-lg bg-gold px-6 py-3 text-sm font-bold text-navy transition hover:scale-105"
+                className="rounded-lg bg-whatsapp px-6 py-3 text-sm font-bold text-white shadow-[0_0_16px_color-mix(in_oklab,_var(--whatsapp),_30%)] transition-all hover:shadow-[0_0_30px_color-mix(in_oklab,_var(--whatsapp),_50%)] hover:brightness-110 hover:scale-105"
               >
                 {s.cta}
               </Link>
@@ -101,7 +104,7 @@ function Hero() {
                 href={waGeneral()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 text-sm font-bold text-white transition hover:bg-whatsapp-dark"
+                className="inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 text-sm font-bold text-white shadow-[0_0_16px_color-mix(in_oklab,_var(--whatsapp),_30%)] transition-all hover:shadow-[0_0_30px_color-mix(in_oklab,_var(--whatsapp),_50%)] hover:brightness-110"
               >
                 <MessageCircle className="h-4 w-4" />
                 {s.cta}
@@ -109,22 +112,22 @@ function Hero() {
             )}
             <Link
               to="/products"
-              className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10"
+              className="rounded-lg border border-glass-border glass-card px-6 py-3 text-sm font-bold text-foreground transition-all hover:border-neon/50 hover:text-neon"
             >
               Browse all
             </Link>
           </div>
         </div>
         <div className="relative hidden md:block">
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-gold/30 to-transparent blur-3xl" />
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neon/20 to-transparent blur-3xl" />
           <div className="relative grid grid-cols-2 gap-4">
-            {[Smartphone, Headphones, Plug, Zap].map((Icon, idx) => (
+            {[Smartphone, Headphones, Plug, Globe].map((Icon, idx) => (
               <div
                 key={idx}
-                className="aspect-square rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur"
+                className="aspect-square rounded-2xl border border-glass-border glass-card p-8 transition-all hover:border-neon/40"
                 style={{ animation: `fade-up 0.6s ease-out ${idx * 0.1}s both` }}
               >
-                <Icon className="h-full w-full text-gold" />
+                <Icon className="h-full w-full text-neon" />
               </div>
             ))}
           </div>
@@ -135,20 +138,20 @@ function Hero() {
           <button
             key={idx}
             onClick={() => setI(idx)}
-            className={`h-2 rounded-full transition-all ${idx === i ? "w-8 bg-gold" : "w-2 bg-white/40"}`}
+            className={`h-2 rounded-full transition-all ${idx === i ? "w-8 bg-neon shadow-[0_0_8px_color-mix(in_oklab,_var(--neon),_50%)]" : "w-2 bg-muted-foreground/40"}`}
             aria-label={`Slide ${idx + 1}`}
           />
         ))}
       </div>
       <button
         onClick={() => setI((x) => (x - 1 + SLIDES.length) % SLIDES.length)}
-        className="absolute left-2 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 backdrop-blur hover:bg-white/20 md:block"
+        className="absolute left-2 top-1/2 hidden -translate-y-1/2 rounded-full glass-card p-2 backdrop-blur hover:border-neon/50 hover:text-neon md:block"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
       <button
         onClick={() => setI((x) => (x + 1) % SLIDES.length)}
-        className="absolute right-2 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/10 p-2 backdrop-blur hover:bg-white/20 md:block"
+        className="absolute right-2 top-1/2 hidden -translate-y-1/2 rounded-full glass-card p-2 backdrop-blur hover:border-neon/50 hover:text-neon md:block"
       >
         <ChevronRight className="h-5 w-5" />
       </button>
@@ -174,7 +177,7 @@ function CategoriesGrid() {
     <section className="mx-auto max-w-7xl px-4 py-12">
       <Reveal variant="left" className="mb-6 flex items-end justify-between">
         <div>
-          <h2 className="text-3xl font-extrabold text-navy">Shop by Category</h2>
+          <h2 className="text-3xl font-extrabold text-gradient">Shop by Category</h2>
           <p className="mt-1 text-sm text-muted-foreground">Find exactly what you need</p>
         </div>
       </Reveal>
@@ -186,12 +189,12 @@ function CategoriesGrid() {
               <Link
                 to={CATEGORY_LINKS[c] ?? "/products"}
                 search={CATEGORY_LINKS[c] ? undefined : ({ category: c } as never)}
-                className="group flex h-full flex-col items-center gap-2 rounded-2xl border bg-card p-5 text-center shadow-[var(--shadow-card)] transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)]"
+                className="group flex h-full flex-col items-center gap-2 rounded-2xl glass-card p-5 text-center transition-all hover:border-neon/40 hover:-translate-y-1"
               >
-                <div className="grid h-14 w-14 place-items-center rounded-full bg-navy text-gold transition group-hover:bg-gold group-hover:text-navy">
+                <div className="grid h-14 w-14 place-items-center rounded-full bg-whatsapp/15 text-whatsapp transition-all duration-300 group-hover:bg-whatsapp group-hover:text-white group-hover:shadow-[0_0_16px_color-mix(in_oklab,_var(--whatsapp),_40%)]">
                   <Icon className="h-7 w-7" />
                 </div>
-                <div className="text-xs font-bold text-navy">{c}</div>
+                <div className="text-xs font-bold text-foreground">{c}</div>
               </Link>
             </Reveal>
           );
@@ -219,29 +222,35 @@ function FlashSale() {
   target.setHours(23, 59, 59, 0);
   const { h, m, s } = useCountdown(target);
   const box = (label: string, v: number) => (
-    <div className="rounded-xl bg-navy p-3 text-center text-white min-w-16">
-      <div className="text-2xl font-extrabold text-gold tabular-nums">
+    <div className="rounded-xl glass-card border-neon/20 p-3 text-center min-w-16">
+      <div className="text-2xl font-extrabold text-neon tabular-nums animate-glow-pulse">
         {String(v).padStart(2, "0")}
       </div>
-      <div className="text-[10px] uppercase tracking-wider opacity-70">{label}</div>
+      <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{label}</div>
     </div>
   );
   return (
     <section className="mx-auto max-w-7xl px-4">
-      <div className="flex flex-col items-center justify-between gap-4 rounded-3xl bg-gradient-to-r from-gold to-gold-light p-6 text-navy md:flex-row md:p-8">
-        <div>
-          <div className="flex items-center gap-2">
-            <Zap className="h-5 w-5" />
-            <span className="text-sm font-bold uppercase tracking-wider">Flash Sale</span>
+      <div className="relative overflow-hidden rounded-3xl border border-gold/20 bg-gradient-to-br from-background via-background to-navy-dark p-6 md:p-8">
+        <div className="absolute inset-0 opacity-10" style={{
+          background: "radial-gradient(ellipse 80% 50% at 50% 50%, var(--gold) 0%, transparent 100%)"
+        }} />
+        <div className="relative z-10 flex flex-col items-center justify-between gap-4 md:flex-row">
+          <div>
+            <div className="flex items-center gap-2">
+              <Zap className="h-5 w-5 text-gold animate-bolt-pulse" />
+              <span className="text-sm font-bold uppercase tracking-widest text-gold">Flash Sale</span>
+            </div>
+            <h3 className="mt-2 text-2xl font-extrabold text-foreground md:text-3xl">10% OFF — Ends Tonight!</h3>
+            <p className="mt-1 text-sm text-muted-foreground">Use code AMZ10 at checkout via WhatsApp</p>
           </div>
-          <h3 className="mt-2 text-2xl font-extrabold md:text-3xl">10% OFF — Ends Tonight!</h3>
-          <p className="mt-1 text-sm opacity-80">Use code AMZ10 at checkout via WhatsApp</p>
+          <div className="flex gap-2">
+            {box("Hrs", h)}
+            {box("Min", m)}
+            {box("Sec", s)}
+          </div>
         </div>
-        <div className="flex gap-2">
-          {box("Hrs", h)}
-          {box("Min", m)}
-          {box("Sec", s)}
-        </div>
+        <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gold/5 blur-3xl" />
       </div>
     </section>
   );
@@ -254,8 +263,8 @@ function ProductRow({ title, ids }: { title: string; ids: Set<string> }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-12">
       <Reveal variant="left" className="mb-6 flex items-end justify-between">
-        <h2 className="text-3xl font-extrabold text-navy">{title}</h2>
-        <Link to="/products" className="text-sm font-bold text-navy hover:text-gold">
+        <h2 className="text-3xl font-extrabold text-gradient">{title}</h2>
+        <Link to="/products" className="text-sm font-bold text-neon transition-all hover:text-gold hover:underline">
           View all →
         </Link>
       </Reveal>
@@ -294,14 +303,14 @@ const REVIEWS = [
 function Reviews() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-12">
-      <h2 className="mb-6 text-center text-3xl font-extrabold text-navy">What our customers say</h2>
+      <h2 className="mb-6 text-center text-3xl font-extrabold text-gradient">What our customers say</h2>
       <div className="grid gap-4 md:grid-cols-3">
         {REVIEWS.map((r, i) => (
-          <div key={i} className="rounded-2xl border bg-card p-6 shadow-[var(--shadow-card)]">
+          <div key={i} className="rounded-2xl glass-card p-6 transition-all hover:border-neon/30">
             <div className="text-gold">{"★".repeat(r.rating)}</div>
-            <p className="mt-3 text-sm text-foreground/80">"{r.text}"</p>
+            <p className="mt-3 text-sm text-muted-foreground">"{r.text}"</p>
             <div className="mt-4 text-xs">
-              <span className="font-bold text-navy">{r.name}</span> ·{" "}
+              <span className="font-bold text-foreground">{r.name}</span> ·{" "}
               <span className="text-muted-foreground">{r.city}</span>
             </div>
           </div>
@@ -316,28 +325,31 @@ function MobileCoverBanner() {
     <section className="mx-auto max-w-7xl px-4 py-12">
       <Link
         to="/tell-us-your-model"
-        className="group relative block overflow-hidden rounded-3xl bg-gradient-to-r from-navy via-navy-light to-navy p-8 md:p-12"
+        className="group relative block overflow-hidden rounded-3xl border border-glass-border glass-card p-8 md:p-12"
       >
+        <div className="absolute inset-0 opacity-10" style={{
+          background: "radial-gradient(ellipse 60% 40% at 30% 40%, var(--neon) 0%, transparent 100%), radial-gradient(ellipse 40% 30% at 70% 60%, var(--gold) 0%, transparent 100%)"
+        }} />
         <div className="relative z-10 grid items-center gap-6 md:grid-cols-[1fr_auto]">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold">
+            <div className="inline-flex items-center gap-2 rounded-full border border-neon/30 glass-card px-3 py-1 text-xs font-bold uppercase tracking-widest text-neon">
               <Sparkles className="h-3.5 w-3.5" /> New Collection
             </div>
-            <h3 className="mt-3 text-2xl font-extrabold text-white md:text-4xl">
+            <h3 className="mt-3 text-2xl font-extrabold text-foreground md:text-4xl">
               Mobile Covers & Protection
             </h3>
-            <p className="mt-2 max-w-md text-sm text-white/70">
+            <p className="mt-2 max-w-md text-sm text-muted-foreground">
               100+ designs available. Tell us your phone model and get the perfect cover delivered to your door.
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <span className="rounded-2xl bg-gold px-8 py-5 text-base font-extrabold text-navy shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_10px_40px_-10px_rgba(255,179,0,0.55)]">
+            <span className="rounded-2xl bg-whatsapp px-8 py-5 text-base font-extrabold text-white shadow-[0_0_16px_color-mix(in_oklab,_var(--whatsapp),_30%)] transition-all duration-300 group-hover:shadow-[0_0_30px_color-mix(in_oklab,_var(--whatsapp),_50%)] group-hover:brightness-110 group-hover:scale-105">
               Tell Us Your Model <ArrowRight className="ml-1 inline h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
           </div>
         </div>
-        <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-gold/5 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-gold/10 blur-3xl" />
+        <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-neon/5 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-gold/8 blur-3xl" />
       </Link>
     </section>
   );
@@ -346,14 +358,17 @@ function MobileCoverBanner() {
 function WhatsAppBanner() {
   return (
     <section className="mx-auto max-w-7xl px-4">
-      <div className="overflow-hidden rounded-3xl bg-navy p-8 text-white md:p-12">
-        <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]">
+      <div className="relative overflow-hidden rounded-3xl border border-glass-border glass-card p-8 md:p-12">
+        <div className="absolute inset-0 opacity-10" style={{
+          background: "radial-gradient(ellipse 70% 50% at 50% 50%, var(--whatsapp) 0%, transparent 100%)"
+        }} />
+        <div className="relative z-10 grid items-center gap-6 md:grid-cols-[1fr_auto]">
           <div>
-            <div className="inline-block rounded-full bg-whatsapp/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-whatsapp">
-              Easiest checkout
+            <div className="inline-flex items-center gap-2 rounded-full border border-whatsapp/30 glass-card px-3 py-1 text-xs font-bold uppercase tracking-widest text-whatsapp">
+              <MessageCircle className="h-3 w-3" /> Easiest checkout
             </div>
-            <h3 className="mt-3 text-2xl font-extrabold md:text-4xl">Order Easily on WhatsApp!</h3>
-            <p className="mt-2 max-w-md text-white/70">
+            <h3 className="mt-3 text-2xl font-extrabold text-foreground md:text-4xl">Order Easily on WhatsApp!</h3>
+            <p className="mt-2 max-w-md text-muted-foreground">
               No signup needed — just message us your order and we'll handle the rest. Cash on
               Delivery available nationwide.
             </p>
@@ -362,7 +377,7 @@ function WhatsAppBanner() {
             href={waGeneral()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 self-start rounded-2xl bg-whatsapp px-8 py-5 text-base font-extrabold text-white shadow-2xl transition hover:scale-105"
+            className="inline-flex items-center gap-3 self-start rounded-2xl bg-whatsapp px-8 py-5 text-base font-extrabold text-white shadow-[0_0_16px_color-mix(in_oklab,_var(--whatsapp),_30%)] transition-all hover:shadow-[0_0_30px_color-mix(in_oklab,_var(--whatsapp),_50%)] hover:brightness-110 hover:scale-105"
           >
             <MessageCircle className="h-6 w-6" /> Chat on WhatsApp
           </a>
@@ -383,12 +398,12 @@ function Trust() {
     <section className="mx-auto max-w-7xl px-4 py-8">
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {items.map(({ Icon, title, sub }) => (
-          <div key={title} className="flex items-center gap-3 rounded-xl border bg-card p-4">
-            <div className="grid h-10 w-10 place-items-center rounded-lg bg-navy text-gold">
+          <div key={title} className="flex items-center gap-3 rounded-xl glass-card p-4 transition-all hover:border-neon/30">
+            <div className="grid h-10 w-10 place-items-center rounded-lg bg-whatsapp/15 text-whatsapp">
               <Icon className="h-5 w-5" />
             </div>
             <div>
-              <div className="text-sm font-bold text-navy">{title}</div>
+              <div className="text-sm font-bold text-foreground">{title}</div>
               <div className="text-xs text-muted-foreground">{sub}</div>
             </div>
           </div>
@@ -402,8 +417,8 @@ function Newsletter() {
   const [email, setEmail] = useState("");
   return (
     <section className="mx-auto max-w-7xl px-4 py-12">
-      <div className="rounded-3xl border-2 border-dashed border-gold/40 bg-secondary p-8 text-center">
-        <h3 className="text-2xl font-extrabold text-navy">Get exclusive offers</h3>
+      <div className="rounded-3xl border border-glass-border glass-card p-8 text-center">
+        <h3 className="text-2xl font-extrabold text-gradient">Get exclusive offers</h3>
         <p className="mt-1 text-sm text-muted-foreground">
           Subscribe for deals, new arrivals and discount codes.
         </p>
@@ -421,9 +436,9 @@ function Newsletter() {
             type="email"
             required
             placeholder="you@email.com"
-            className="flex-1 rounded-lg border border-border bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+            className="flex-1 rounded-lg bg-secondary px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground/60 focus:border-neon focus:bg-background"
           />
-          <button className="rounded-lg bg-navy px-6 py-3 text-sm font-bold text-white hover:bg-navy-light">
+          <button className="rounded-lg bg-whatsapp px-6 py-3 text-sm font-bold text-white shadow-[0_0_12px_color-mix(in_oklab,_var(--whatsapp),_30%)] transition-all hover:shadow-[0_0_20px_color-mix(in_oklab,_var(--whatsapp),_50%)] hover:brightness-110">
             Subscribe
           </button>
         </form>

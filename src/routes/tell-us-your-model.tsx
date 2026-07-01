@@ -101,33 +101,33 @@ Thank you! 🙏`;
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
       <div className="text-center">
-        <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-2xl bg-gold text-navy">
+        <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-2xl bg-gold text-background">
           <Smartphone className="h-8 w-8" />
         </div>
-        <h1 className="text-3xl font-extrabold text-navy">Tell Us Your Model</h1>
+        <h1 className="text-3xl font-extrabold text-foreground">Tell Us Your Model</h1>
         <p className="mt-2 text-muted-foreground">
           Every model cover available! Tell us your phone model and our team will contact you within 1 hour.
         </p>
       </div>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2">
-        <div className="flex items-start gap-3 rounded-xl border bg-card p-4 shadow-[var(--shadow-card)]">
+        <div className="flex items-start gap-3 rounded-xl border border-glass-border bg-background/50 p-4">
           <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
           <div className="text-sm">
-            <div className="font-bold text-navy">All Models Available</div>
+            <div className="font-bold text-foreground">All Models Available</div>
             <div className="text-xs text-muted-foreground">Covers for every brand and model</div>
           </div>
         </div>
-        <div className="flex items-start gap-3 rounded-xl border bg-card p-4 shadow-[var(--shadow-card)]">
+        <div className="flex items-start gap-3 rounded-xl border border-glass-border bg-background/50 p-4">
           <Package className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
           <div className="text-sm">
-            <div className="font-bold text-navy">Bulk Orders Welcome</div>
+            <div className="font-bold text-foreground">Bulk Orders Welcome</div>
             <div className="text-xs text-muted-foreground">Wholesale pricing for businesses</div>
           </div>
         </div>
       </div>
 
-      <div className="mt-8 rounded-2xl border bg-card p-6 shadow-[var(--shadow-card)] md:p-8">
+      <div className="mt-8 rounded-2xl border border-glass-border bg-background/50 p-6 md:p-8">
         <div className="mb-6 grid gap-4 md:grid-cols-2">
           <div>
             <label className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -218,7 +218,7 @@ Thank you! 🙏`;
 
         <p className="mt-3 text-center text-xs text-muted-foreground">
           Call us directly at{" "}
-          <a href={`tel:+92${WA_NUMBER.slice(1)}`} className="font-bold text-navy hover:text-gold">
+          <a href={`tel:+92${WA_NUMBER.slice(1)}`} className="font-bold text-foreground hover:text-gold">
             0322 0066229
           </a>
         </p>

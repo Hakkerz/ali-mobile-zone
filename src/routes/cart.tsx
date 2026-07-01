@@ -20,15 +20,15 @@ function CartPage() {
     return (
       <div className="mx-auto max-w-2xl px-4 py-20 text-center">
         <div className="mx-auto mb-4 grid h-20 w-20 place-items-center rounded-full bg-secondary">
-          <ShoppingBag className="h-10 w-10 text-navy" />
+          <ShoppingBag className="h-10 w-10 text-foreground" />
         </div>
-        <h1 className="text-2xl font-extrabold text-navy">Your cart is empty</h1>
+        <h1 className="text-2xl font-extrabold text-foreground">Your cart is empty</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Discover our products and start shopping.
         </p>
         <Link
           to="/products"
-          className="mt-6 inline-block rounded-lg bg-navy px-6 py-3 text-sm font-bold text-white hover:bg-navy-light"
+          className="mt-6 inline-block rounded-lg bg-whatsapp px-6 py-3 text-sm font-bold text-white hover:bg-whatsapp-dark"
         >
           Continue Shopping
         </Link>
@@ -38,7 +38,7 @@ function CartPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="text-3xl font-extrabold text-navy">Shopping Cart</h1>
+      <h1 className="text-3xl font-extrabold text-foreground">Shopping Cart</h1>
       <p className="mt-1 text-sm text-muted-foreground">
         {detailed.length} item{detailed.length > 1 ? "s" : ""} in your cart
       </p>
@@ -48,7 +48,7 @@ function CartPage() {
           {detailed.map((it) => (
             <div
               key={it.id}
-              className="flex gap-4 rounded-2xl border bg-card p-4 shadow-[var(--shadow-card)]"
+              className="flex gap-4 rounded-2xl border border-glass-border bg-background/50 p-4"
             >
               <Link
                 to="/products/$id"
@@ -68,11 +68,11 @@ function CartPage() {
                 <Link
                   to="/products/$id"
                   params={{ id: it.product.id }}
-                  className="text-sm font-bold text-navy hover:text-gold line-clamp-2"
+                  className="text-sm font-bold text-foreground hover:text-gold line-clamp-2"
                 >
                   {it.product.name}
                 </Link>
-                <div className="mt-1 text-sm font-extrabold text-navy">
+                <div className="mt-1 text-sm font-extrabold text-foreground">
                   {formatPrice(it.product.price)}
                 </div>
                 <div className="mt-auto flex items-center justify-between">
@@ -101,13 +101,13 @@ function CartPage() {
               </div>
             </div>
           ))}
-          <Link to="/products" className="inline-block text-sm font-bold text-navy hover:text-gold">
+          <Link to="/products" className="inline-block text-sm font-bold text-foreground hover:text-gold">
             ← Continue Shopping
           </Link>
         </div>
 
-        <aside className="h-fit rounded-2xl border bg-card p-6 shadow-[var(--shadow-card)] md:sticky md:top-24">
-          <h3 className="text-lg font-extrabold text-navy">Order Summary</h3>
+        <aside className="h-fit rounded-2xl border border-glass-border bg-background/50 p-6 md:sticky md:top-24">
+          <h3 className="text-lg font-extrabold text-foreground">Order Summary</h3>
           <div className="mt-4 space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Subtotal</span>
@@ -123,8 +123,8 @@ function CartPage() {
               </div>
             )}
             <div className="mt-2 flex justify-between border-t pt-3 text-base">
-              <span className="font-bold text-navy">Total</span>
-              <span className="font-extrabold text-navy">{formatPrice(total)}</span>
+              <span className="font-bold text-foreground">Total</span>
+              <span className="font-extrabold text-foreground">{formatPrice(total)}</span>
             </div>
           </div>
           <button

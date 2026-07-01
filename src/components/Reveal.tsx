@@ -7,7 +7,7 @@ import {
   type ElementType,
 } from "react";
 
-type Variant = "up" | "left" | "pop";
+type Variant = "up" | "left" | "right" | "pop" | "scale";
 
 export function Reveal({
   children,
@@ -47,13 +47,18 @@ export function Reveal({
     return () => io.disconnect();
   }, []);
 
-  const base = variant === "left" ? "reveal-left" : variant === "pop" ? "reveal-pop" : "reveal";
+  const cls =
+    variant === "left" ? "reveal-left"
+    : variant === "right" ? "reveal-right"
+    : variant === "pop" ? "reveal-pop"
+    : variant === "scale" ? "reveal-scale"
+    : "reveal";
   const style: CSSProperties = { transitionDelay: visible ? `${delay}ms` : "0ms" };
   return (
     <As
       ref={ref as never}
       style={style}
-      className={`${base} ${visible ? "is-visible" : ""} ${className}`}
+      className={`${cls} ${visible ? "is-visible" : ""} ${className}`}
     >
       {children}
     </As>

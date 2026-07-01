@@ -19,14 +19,14 @@ function ContactPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
       <div className="text-center">
-        <h1 className="text-4xl font-extrabold text-navy">Get in touch</h1>
+        <h1 className="text-4xl font-extrabold text-foreground">Get in touch</h1>
         <p className="mt-2 text-muted-foreground">
           We're here to help — WhatsApp is the fastest way to reach us.
         </p>
       </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl bg-navy p-8 text-white">
+        <div className="rounded-3xl glass-card p-8 text-white">
           <div className="grid h-14 w-14 place-items-center rounded-2xl bg-whatsapp">
             <MessageCircle className="h-7 w-7" />
           </div>
@@ -59,13 +59,13 @@ function ContactPage() {
           ].map(({ Icon, title, text }) => (
             <div
               key={title}
-              className="flex items-start gap-4 rounded-2xl border bg-card p-5 shadow-[var(--shadow-card)]"
+              className="flex items-start gap-4 rounded-2xl border border-glass-border bg-background/50 p-5"
             >
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gold text-navy">
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gold text-background">
                 <Icon className="h-5 w-5" />
               </div>
               <div>
-                <div className="text-sm font-bold text-navy">{title}</div>
+                <div className="text-sm font-bold text-foreground">{title}</div>
                 <div className="text-sm text-muted-foreground">{text}</div>
               </div>
             </div>

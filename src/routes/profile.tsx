@@ -34,18 +34,18 @@ function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-navy px-4 py-12">
-      <div className="mx-auto max-w-md rounded-3xl bg-white p-8 shadow-2xl">
-        <h1 className="text-3xl font-extrabold text-navy">Your profile</h1>
+    <div className="min-h-screen bg-background px-4 py-12">
+      <div className="mx-auto max-w-md rounded-3xl glass-card p-8">
+        <h1 className="text-3xl font-extrabold text-foreground">Your profile</h1>
         <p className="mt-2 text-sm text-muted-foreground">Manage your account and order details.</p>
         <div className="mt-6 space-y-4 rounded-3xl bg-secondary p-5">
           <div>
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Name</div>
-            <div className="mt-1 text-base font-medium text-navy">{user.name}</div>
+            <div className="mt-1 text-base font-medium text-foreground">{user.name}</div>
           </div>
           <div>
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Email</div>
-            <div className="mt-1 text-base font-medium text-navy">{user.email}</div>
+            <div className="mt-1 text-base font-medium text-foreground">{user.email}</div>
           </div>
         </div>
         <button
@@ -57,7 +57,7 @@ function ProfilePage() {
         </button>
         <Link
           to="/"
-          className="mt-4 block text-center text-sm text-muted-foreground hover:text-navy"
+          className="mt-4 block text-center text-sm text-muted-foreground hover:text-foreground"
         >
           ← Back to shop
         </Link>

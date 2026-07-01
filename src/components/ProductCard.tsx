@@ -1,3 +1,4 @@
+import { useRef, useCallback } from "react";
 import { Link } from "@tanstack/react-router";
 import { Heart, ShoppingCart, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -8,6 +9,7 @@ import { waProduct } from "@/lib/whatsapp";
 import { ProductImage } from "./ProductImage";
 
 export function ProductCard({ product }: { product: Product }) {
+  const cardRef = useRef<HTMLDivElement>(null);
   const { add } = useCart();
   const { has, toggle } = useWishlist();
   const wished = has(product.id);
@@ -15,16 +17,41 @@ export function ProductCard({ product }: { product: Product }) {
   const isNew = NEW_IDS.has(product.id);
   const lowStock = product.stock > 0 && product.stock < 5;
 
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg)";
+  }, []);
+
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)]">
-      <div className="absolute left-3 top-3 z-10 flex flex-col gap-1">
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="group relative flex flex-col overflow-hidden rounded-2xl glass-card transition-all duration-300 hover:translate-y-[-2px]"
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      <div className="absolute left-3 top-3 z-10 flex flex-col gap-1" style={{ transform: "translateZ(20px)" }}>
         {isBest && (
-          <span className="rounded-full bg-gold px-2 py-0.5 text-[10px] font-bold text-navy">
+          <span className="rounded-full bg-gold px-2 py-0.5 text-[10px] font-bold text-navy shadow-[0_0_10px_color-mix(in_oklab,_var(--gold),_50%)]">
             ★ BEST SELLER
           </span>
         )}
         {isNew && (
-          <span className="rounded-full bg-navy px-2 py-0.5 text-[10px] font-bold text-white">
+          <span className="rounded-full bg-whatsapp px-2 py-0.5 text-[10px] font-bold text-white shadow-[0_0_10px_color-mix(in_oklab,_var(--whatsapp),_50%)]">
             NEW
           </span>
         )}
@@ -45,17 +72,18 @@ export function ProductCard({ product }: { product: Product }) {
           toggle(product.id);
           toast(wished ? "Removed from wishlist" : "Added to wishlist ❤️");
         }}
-        className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full bg-white/90 backdrop-blur shadow transition hover:scale-110"
+        className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full glass-card hover:border-whatsapp/50"
+        style={{ transform: "translateZ(20px)" }}
       >
         <Heart
-          className={`h-4 w-4 ${wished ? "fill-destructive text-destructive" : "text-navy"}`}
+          className={`h-4 w-4 ${wished ? "fill-destructive text-destructive" : "text-foreground"}`}
         />
       </button>
 
       <Link
         to="/products/$id"
         params={{ id: product.id }}
-        className="block aspect-square overflow-hidden bg-white"
+        className="block aspect-square overflow-hidden"
       >
         <ProductImage
           src={product.image}
@@ -64,20 +92,20 @@ export function ProductCard({ product }: { product: Product }) {
         />
       </Link>
 
-      <div className="flex flex-1 flex-col gap-3 p-4">
+      <div className="flex flex-1 flex-col gap-3 p-4" style={{ transform: "translateZ(10px)" }}>
         <div>
-          <div className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+          <div className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
             {product.brand}
           </div>
           <Link
             to="/products/$id"
             params={{ id: product.id }}
-            className="line-clamp-2 text-sm font-semibold text-navy hover:text-gold"
+            className="line-clamp-2 text-sm font-semibold text-foreground transition-colors hover:text-neon"
           >
             {product.name}
           </Link>
         </div>
-        <div className="text-lg font-extrabold text-navy">{formatPrice(product.price)}</div>
+        <div className="text-lg font-extrabold text-gradient">{formatPrice(product.price)}</div>
         <div className="mt-auto flex flex-col gap-2">
           <button
             disabled={product.stock === 0}
@@ -85,7 +113,7 @@ export function ProductCard({ product }: { product: Product }) {
               add(product.id);
               toast.success("Added to cart 🛒");
             }}
-            className="flex items-center justify-center gap-2 rounded-lg bg-navy px-3 py-2 text-xs font-bold text-white transition hover:bg-navy-light disabled:opacity-50"
+            className="flex items-center justify-center gap-2 rounded-lg bg-whatsapp px-3 py-2 text-xs font-bold text-white shadow-[0_0_12px_color-mix(in_oklab,_var(--whatsapp),_30%)] transition-all hover:shadow-[0_0_20px_color-mix(in_oklab,_var(--whatsapp),_50%)] hover:brightness-110 disabled:opacity-50"
           >
             <ShoppingCart className="h-4 w-4" /> Add to Cart
           </button>
@@ -93,7 +121,7 @@ export function ProductCard({ product }: { product: Product }) {
             href={waProduct(product)}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-lg bg-whatsapp px-3 py-2 text-xs font-bold text-white transition hover:bg-whatsapp-dark"
+            className="glass-card flex items-center justify-center gap-2 rounded-lg border-whatsapp/30 px-3 py-2 text-xs font-bold text-whatsapp transition-all hover:bg-whatsapp/15 hover:border-whatsapp/60"
           >
             <MessageCircle className="h-4 w-4" /> Order on WhatsApp
           </a>

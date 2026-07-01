@@ -44,10 +44,10 @@ export function WhatsAppCheckoutModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-lg rounded-2xl bg-white shadow-2xl"
+        className="w-full max-w-lg rounded-2xl glass-card"
       >
-        <div className="flex items-center justify-between border-b p-5">
-          <h3 className="text-lg font-extrabold text-navy">Complete your order</h3>
+        <div className="flex items-center justify-between border-b border-glass-border p-5">
+          <h3 className="text-lg font-extrabold text-foreground">Complete your order</h3>
           <button
             onClick={onClose}
             className="grid h-9 w-9 place-items-center rounded-lg hover:bg-secondary"
@@ -84,7 +84,7 @@ export function WhatsAppCheckoutModal({
               <span>Shipping</span>
               <span>{shipping === 0 ? "Free" : formatPrice(shipping)}</span>
             </div>
-            <div className="mt-1 flex justify-between border-t pt-1 font-bold text-navy">
+            <div className="mt-1 flex justify-between border-t border-glass-border pt-1 font-bold text-foreground">
               <span>Total</span>
               <span>{formatPrice(total)}</span>
             </div>

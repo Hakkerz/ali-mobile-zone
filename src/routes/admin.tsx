@@ -39,15 +39,15 @@ function AdminPage() {
 function Login({ onLogin }: { onLogin: (pw: string) => void }) {
   const [pw, setPw] = useState("");
   return (
-    <div className="grid min-h-screen place-items-center bg-navy p-4">
+    <div className="grid min-h-screen place-items-center bg-background p-4">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           onLogin(pw);
         }}
-        className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-2xl"
+        className="w-full max-w-sm rounded-2xl glass-card p-8"
       >
-        <h1 className="text-2xl font-extrabold text-navy">Admin Login</h1>
+        <h1 className="text-2xl font-extrabold text-foreground">Admin Login</h1>
         <p className="mt-1 text-sm text-muted-foreground">Enter password to continue</p>
         <input
           type="password"
@@ -56,12 +56,12 @@ function Login({ onLogin }: { onLogin: (pw: string) => void }) {
           placeholder="Password"
           className="mt-5 w-full rounded-lg border border-border px-3 py-2.5 text-sm outline-none focus:border-gold"
         />
-        <button className="mt-3 w-full rounded-lg bg-navy py-3 text-sm font-bold text-white hover:bg-navy-light">
+        <button className="mt-3 w-full rounded-lg bg-whatsapp py-3 text-sm font-bold text-white hover:bg-whatsapp-dark">
           Sign in
         </button>
         <Link
           to="/"
-          className="mt-4 block text-center text-xs text-muted-foreground hover:text-navy"
+          className="mt-4 block text-center text-xs text-muted-foreground hover:text-foreground"
         >
           ← Back to shop
         </Link>
@@ -93,13 +93,13 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
               <ArrowLeft className="h-4 w-4" />
             </Link>
             <div>
-              <h1 className="text-lg font-extrabold text-navy">Admin Dashboard</h1>
+              <h1 className="text-lg font-extrabold text-foreground">Admin Dashboard</h1>
               <p className="text-xs text-muted-foreground">Ali Mobile Zone</p>
             </div>
           </div>
           <button
             onClick={onLogout}
-            className="inline-flex items-center gap-2 rounded-lg border bg-white px-3 py-2 text-sm font-bold text-navy hover:bg-secondary"
+            className="inline-flex items-center gap-2 rounded-lg border border-glass-border bg-background/50 px-3 py-2 text-sm font-bold text-foreground hover:brightness-125"
           >
             <LogOut className="h-4 w-4" /> Logout
           </button>
@@ -109,7 +109,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
             <button
               key={t}
               onClick={() => setTab(t)}
-              className={`border-b-2 px-4 py-2 text-sm font-bold capitalize ${tab === t ? "border-gold text-navy" : "border-transparent text-muted-foreground hover:text-navy"}`}
+              className={`border-b-2 px-4 py-2 text-sm font-bold capitalize ${tab === t ? "border-gold text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
             >
               {t}
             </button>
@@ -125,7 +125,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
                 Icon: Package,
                 label: "Total Products",
                 value: products.length,
-                color: "bg-navy text-gold",
+                color: "bg-background text-gold",
               },
               {
                 Icon: ShoppingBag,
@@ -137,7 +137,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
                 Icon: Tag,
                 label: "Categories",
                 value: CATEGORIES.length,
-                color: "bg-gold text-navy",
+                color: "bg-gold text-background",
               },
               {
                 Icon: AlertTriangle,
@@ -146,21 +146,21 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
                 color: "bg-destructive text-white",
               },
             ].map((c) => (
-              <div key={c.label} className="rounded-2xl border bg-white p-5">
+              <div key={c.label} className="rounded-2xl border border-glass-border bg-background/50 p-5">
                 <div className={`grid h-10 w-10 place-items-center rounded-lg ${c.color}`}>
                   <c.Icon className="h-5 w-5" />
                 </div>
-                <div className="mt-3 text-3xl font-extrabold text-navy">{c.value}</div>
+                <div className="mt-3 text-3xl font-extrabold text-foreground">{c.value}</div>
                 <div className="text-sm text-muted-foreground">{c.label}</div>
               </div>
             ))}
             {lowStock.length > 0 && (
-              <div className="md:col-span-4 rounded-2xl border bg-white p-5">
-                <h3 className="text-lg font-extrabold text-navy">Low stock items</h3>
+              <div className="md:col-span-4 rounded-2xl border border-glass-border bg-background/50 p-5">
+                <h3 className="text-lg font-extrabold text-foreground">Low stock items</h3>
                 <div className="mt-3 divide-y">
                   {lowStock.map((p) => (
                     <div key={p.id} className="flex items-center justify-between py-2 text-sm">
-                      <span className="font-medium text-navy">{p.name}</span>
+                      <span className="font-medium text-foreground">{p.name}</span>
                       <span className="font-bold text-destructive">{p.stock} left</span>
                     </div>
                   ))}
@@ -173,15 +173,15 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
         {tab === "products" && (
           <div>
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-extrabold text-navy">Products ({products.length})</h2>
+              <h2 className="text-xl font-extrabold text-foreground">Products ({products.length})</h2>
               <button
                 onClick={() => setCreating(true)}
-                className="inline-flex items-center gap-2 rounded-lg bg-navy px-4 py-2 text-sm font-bold text-white hover:bg-navy-light"
+                className="inline-flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-2 text-sm font-bold text-white hover:bg-whatsapp-dark"
               >
                 <Plus className="h-4 w-4" /> Add Product
               </button>
             </div>
-            <div className="overflow-hidden rounded-2xl border bg-white">
+            <div className="overflow-hidden rounded-2xl border border-glass-border bg-background/50">
               <table className="w-full text-sm">
                 <thead className="bg-secondary text-xs uppercase tracking-wider text-muted-foreground">
                   <tr>
@@ -205,7 +205,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
                             />
                           </div>
                           <div>
-                            <div className="font-bold text-navy">{p.name}</div>
+                            <div className="font-bold text-foreground">{p.name}</div>
                             <div className="text-xs text-muted-foreground">{p.brand}</div>
                           </div>
                         </div>
@@ -305,9 +305,9 @@ function ProductForm({
           e.preventDefault();
           onSave(p);
         }}
-        className="w-full max-w-lg rounded-2xl bg-white p-6"
+        className="w-full max-w-lg rounded-2xl glass-card p-6"
       >
-        <h3 className="text-lg font-extrabold text-navy">
+        <h3 className="text-lg font-extrabold text-foreground">
           {initial ? "Edit Product" : "New Product"}
         </h3>
         <div className="mt-4 grid gap-3">
@@ -384,7 +384,7 @@ function ProductForm({
           >
             Cancel
           </button>
-          <button className="flex-1 rounded-lg bg-navy py-2.5 text-sm font-bold text-white hover:bg-navy-light">
+          <button className="flex-1 rounded-lg bg-whatsapp py-2.5 text-sm font-bold text-white hover:bg-whatsapp-dark">
             Save
           </button>
         </div>
@@ -416,9 +416,9 @@ function OrdersPanel({
   const [f, setF] = useState({ name: "", phone: "", total: 0, notes: "" });
   return (
     <div className="grid gap-6 md:grid-cols-[1fr_320px]">
-      <div className="rounded-2xl border bg-white">
-        <div className="border-b px-5 py-4">
-          <h3 className="text-lg font-extrabold text-navy">Orders log ({orders.length})</h3>
+      <div className="rounded-2xl border border-glass-border bg-background/50">
+        <div className="border-b border-glass-border px-5 py-4">
+          <h3 className="text-lg font-extrabold text-foreground">Orders log ({orders.length})</h3>
         </div>
         {orders.length === 0 ? (
           <div className="px-5 py-10 text-center text-sm text-muted-foreground">
@@ -429,7 +429,7 @@ function OrdersPanel({
             {orders.map((o) => (
               <div key={o.id} className="flex items-start justify-between gap-4 px-5 py-3 text-sm">
                 <div>
-                  <div className="font-bold text-navy">
+                  <div className="font-bold text-foreground">
                     {o.name} <span className="text-muted-foreground font-normal">· {o.phone}</span>
                   </div>
                   <div className="text-xs text-muted-foreground">
@@ -438,7 +438,7 @@ function OrdersPanel({
                   {o.notes && <div className="mt-1 text-xs text-muted-foreground">{o.notes}</div>}
                 </div>
                 <div className="text-right">
-                  <div className="font-extrabold text-navy">{formatPrice(o.total)}</div>
+                  <div className="font-extrabold text-foreground">{formatPrice(o.total)}</div>
                   <button
                     onClick={() => onRemove(o.id)}
                     className="mt-1 text-xs text-destructive hover:underline"
@@ -459,9 +459,9 @@ function OrdersPanel({
           setF({ name: "", phone: "", total: 0, notes: "" });
           toast.success("Order logged");
         }}
-        className="h-fit rounded-2xl border bg-white p-5"
+        className="h-fit rounded-2xl border border-glass-border bg-background/50 p-5"
       >
-        <h3 className="text-lg font-extrabold text-navy">Log WhatsApp order</h3>
+        <h3 className="text-lg font-extrabold text-foreground">Log WhatsApp order</h3>
         <div className="mt-4 space-y-3">
           <input
             placeholder="Customer name"
@@ -490,7 +490,7 @@ function OrdersPanel({
             onChange={(e) => setF({ ...f, notes: e.target.value })}
             className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:border-gold"
           />
-          <button className="w-full rounded-lg bg-navy py-2.5 text-sm font-bold text-white hover:bg-navy-light">
+          <button className="w-full rounded-lg bg-whatsapp py-2.5 text-sm font-bold text-white hover:bg-whatsapp-dark">
             Add order
           </button>
         </div>

@@ -78,11 +78,11 @@ function ProductsPage() {
   const FilterContent = (
     <div className="space-y-6">
       <div>
-        <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-navy">Category</h4>
+        <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Category</h4>
         <div className="space-y-1.5">
           <button
             onClick={() => update({ category: undefined })}
-            className={`block w-full rounded-md px-2 py-1 text-left text-sm ${!search.category ? "bg-navy text-white" : "hover:bg-secondary"}`}
+            className={`block w-full rounded-md px-2 py-1 text-left text-sm ${!search.category ? "bg-whatsapp text-white" : "hover:bg-secondary"}`}
           >
             All
           </button>
@@ -90,7 +90,7 @@ function ProductsPage() {
             <button
               key={c}
               onClick={() => update({ category: c })}
-              className={`block w-full rounded-md px-2 py-1 text-left text-sm ${search.category === c ? "bg-navy text-white" : "hover:bg-secondary"}`}
+              className={`block w-full rounded-md px-2 py-1 text-left text-sm ${search.category === c ? "bg-whatsapp text-white" : "hover:bg-secondary"}`}
             >
               {c}
             </button>
@@ -98,11 +98,11 @@ function ProductsPage() {
         </div>
       </div>
       <div>
-        <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-navy">Brand</h4>
+        <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Brand</h4>
         <div className="space-y-1.5">
           <button
             onClick={() => update({ brand: undefined })}
-            className={`block w-full rounded-md px-2 py-1 text-left text-sm ${!search.brand ? "bg-navy text-white" : "hover:bg-secondary"}`}
+            className={`block w-full rounded-md px-2 py-1 text-left text-sm ${!search.brand ? "bg-whatsapp text-white" : "hover:bg-secondary"}`}
           >
             All
           </button>
@@ -110,7 +110,7 @@ function ProductsPage() {
             <button
               key={b}
               onClick={() => update({ brand: b })}
-              className={`block w-full rounded-md px-2 py-1 text-left text-sm ${search.brand === b ? "bg-navy text-white" : "hover:bg-secondary"}`}
+              className={`block w-full rounded-md px-2 py-1 text-left text-sm ${search.brand === b ? "bg-whatsapp text-white" : "hover:bg-secondary"}`}
             >
               {b}
             </button>
@@ -118,7 +118,7 @@ function ProductsPage() {
         </div>
       </div>
       <div>
-        <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-navy">
+        <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">
           Max Price: Rs.{maxPrice.toLocaleString()}
         </h4>
         <input
@@ -139,20 +139,20 @@ function ProductsPage() {
     <div className="mx-auto max-w-7xl px-4 py-8">
       <div className="mb-6 flex items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-extrabold text-navy">All Products</h1>
+          <h1 className="text-3xl font-extrabold text-foreground">All Products</h1>
           <p className="mt-1 text-sm text-muted-foreground">{filtered.length} products available</p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setOpen(true)}
-            className="flex items-center gap-2 rounded-lg border bg-white px-3 py-2 text-sm font-medium md:hidden"
+            className="flex items-center gap-2 rounded-lg border border-glass-border bg-background/50 px-3 py-2 text-sm font-medium md:hidden"
           >
             <SlidersHorizontal className="h-4 w-4" /> Filters
           </button>
           <select
             value={search.sort ?? "popular"}
             onChange={(e) => update({ sort: e.target.value })}
-            className="rounded-lg border border-border bg-white px-3 py-2 text-sm focus:border-gold"
+            className="rounded-lg border border-glass-border bg-background/50 px-3 py-2 text-sm focus:border-gold"
           >
             <option value="popular">Popular</option>
             <option value="newest">Newest</option>
@@ -164,14 +164,14 @@ function ProductsPage() {
 
       <div className="grid gap-6 md:grid-cols-[240px_1fr]">
         <aside className="hidden md:block">
-          <div className="sticky top-24 rounded-2xl border bg-card p-5 shadow-[var(--shadow-card)]">
+          <div className="sticky top-24 rounded-2xl border border-glass-border bg-background/50 p-5">
             {FilterContent}
           </div>
         </aside>
 
         <div>
           {paged.length === 0 ? (
-            <div className="rounded-2xl border bg-card p-10 text-center text-muted-foreground">
+            <div className="rounded-2xl border border-glass-border bg-background/50 p-10 text-center text-muted-foreground">
               No products match these filters.
             </div>
           ) : (
@@ -192,7 +192,7 @@ function ProductsPage() {
                         ({ ...prev, page: i + 1 }) as never,
                     })
                   }
-                  className={`h-9 w-9 rounded-lg text-sm font-bold ${page === i + 1 ? "bg-navy text-white" : "border bg-white text-navy hover:bg-secondary"}`}
+                  className={`h-9 w-9 rounded-lg text-sm font-bold ${page === i + 1 ? "bg-whatsapp text-white" : "border border-glass-border bg-background/50 text-foreground hover:brightness-125"}`}
                 >
                   {i + 1}
                 </button>
@@ -205,11 +205,11 @@ function ProductsPage() {
       {open && (
         <div className="fixed inset-0 z-[9998] flex md:hidden" onClick={() => setOpen(false)}>
           <div
-            className="ml-auto h-full w-80 max-w-[85vw] overflow-y-auto bg-white p-5"
+            className="ml-auto h-full w-80 max-w-[85vw] overflow-y-auto bg-background/95 backdrop-blur-xl p-5"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-extrabold text-navy">Filters</h3>
+              <h3 className="text-lg font-extrabold text-foreground">Filters</h3>
               <button onClick={() => setOpen(false)}>
                 <X className="h-5 w-5" />
               </button>

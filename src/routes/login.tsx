@@ -39,14 +39,14 @@ function LoginPage() {
   };
 
   return (
-    <div className="grid min-h-screen place-items-center bg-navy p-4">
-      <form onSubmit={handleSubmit} className="w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl">
-        <h1 className="text-3xl font-extrabold text-navy">Welcome back</h1>
+    <div className="grid min-h-screen place-items-center bg-background p-4">
+      <form onSubmit={handleSubmit} className="w-full max-w-md rounded-3xl glass-card p-8">
+        <h1 className="text-3xl font-extrabold text-foreground">Welcome back</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Login to manage your orders and save your account details.
         </p>
 
-        <label className="mt-6 block text-sm font-semibold text-navy">Email</label>
+        <label className="mt-6 block text-sm font-semibold text-foreground">Email</label>
         <input
           type="email"
           value={email}
@@ -55,7 +55,7 @@ function LoginPage() {
           className="mt-2 w-full rounded-2xl border border-border bg-secondary px-4 py-3 text-sm outline-none focus:border-gold focus:bg-white"
         />
 
-        <label className="mt-4 block text-sm font-semibold text-navy">Password</label>
+        <label className="mt-4 block text-sm font-semibold text-foreground">Password</label>
         <input
           type="password"
           value={password}
@@ -66,14 +66,14 @@ function LoginPage() {
 
         <button
           disabled={submitting}
-          className="mt-6 w-full rounded-2xl bg-navy px-4 py-3 text-sm font-bold text-white transition hover:bg-navy-light disabled:opacity-50"
+          className="mt-6 w-full rounded-2xl bg-whatsapp px-4 py-3 text-sm font-bold text-white transition hover:bg-whatsapp-dark disabled:opacity-50"
         >
           {submitting ? "Logging in..." : "Login"}
         </button>
 
         <p className="mt-4 text-center text-sm text-muted-foreground">
           Don't have an account?{" "}
-          <Link to="/signup" className="font-semibold text-navy hover:text-gold">
+          <Link to="/signup" className="font-semibold text-foreground hover:text-gold">
             Sign up
           </Link>
         </p>
