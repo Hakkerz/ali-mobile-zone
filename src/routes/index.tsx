@@ -12,6 +12,8 @@ import {
   Apple,
   Package2,
   Zap,
+  ArrowRight,
+  Sparkles,
 } from "lucide-react";
 import { toast } from "sonner";
 import { ProductCard } from "@/components/ProductCard";
@@ -163,6 +165,10 @@ const CATEGORY_ICONS: Record<string, typeof Plug> = {
   "Mobile Covers": Smartphone,
 };
 
+const CATEGORY_LINKS: Record<string, string> = {
+  "Mobile Covers": "/tell-us-your-model",
+};
+
 function CategoriesGrid() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-12">
@@ -178,8 +184,8 @@ function CategoriesGrid() {
           return (
             <Reveal key={c} variant="pop" delay={idx * 80}>
               <Link
-                to="/products"
-                search={{ category: c } as never}
+                to={CATEGORY_LINKS[c] ?? "/products"}
+                search={CATEGORY_LINKS[c] ? undefined : ({ category: c } as never)}
                 className="group flex h-full flex-col items-center gap-2 rounded-2xl border bg-card p-5 text-center shadow-[var(--shadow-card)] transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)]"
               >
                 <div className="grid h-14 w-14 place-items-center rounded-full bg-navy text-gold transition group-hover:bg-gold group-hover:text-navy">
@@ -305,6 +311,38 @@ function Reviews() {
   );
 }
 
+function MobileCoverBanner() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-12">
+      <Link
+        to="/tell-us-your-model"
+        className="group relative block overflow-hidden rounded-3xl bg-gradient-to-r from-navy via-navy-light to-navy p-8 md:p-12"
+      >
+        <div className="relative z-10 grid items-center gap-6 md:grid-cols-[1fr_auto]">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold">
+              <Sparkles className="h-3.5 w-3.5" /> New Collection
+            </div>
+            <h3 className="mt-3 text-2xl font-extrabold text-white md:text-4xl">
+              Mobile Covers & Protection
+            </h3>
+            <p className="mt-2 max-w-md text-sm text-white/70">
+              100+ designs available. Tell us your phone model and get the perfect cover delivered to your door.
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="rounded-2xl bg-gold px-8 py-5 text-base font-extrabold text-navy shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_10px_40px_-10px_rgba(255,179,0,0.55)]">
+              Tell Us Your Model <ArrowRight className="ml-1 inline h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+          </div>
+        </div>
+        <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-gold/5 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-gold/10 blur-3xl" />
+      </Link>
+    </section>
+  );
+}
+
 function WhatsAppBanner() {
   return (
     <section className="mx-auto max-w-7xl px-4">
@@ -402,6 +440,7 @@ function HomePage() {
       <CategoriesGrid />
       <FlashSale />
       <ProductRow title="Best Sellers" ids={BEST_SELLER_IDS} />
+      <MobileCoverBanner />
       <ShowcaseStrip />
       <ProductRow title="New Arrivals" ids={NEW_IDS} />
       <WhatsAppBanner />

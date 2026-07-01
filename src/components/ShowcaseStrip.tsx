@@ -1,34 +1,5 @@
 import { Reveal } from "./Reveal";
 
-function PhoneCoverCard() {
-  return (
-    <div className="relative mx-auto h-44 w-28">
-      {/* phone */}
-      <svg viewBox="0 0 110 180" className="absolute inset-0 h-full w-full" fill="none" aria-hidden>
-        <rect
-          x="5"
-          y="5"
-          width="100"
-          height="170"
-          rx="16"
-          fill="#1a2f5a"
-          stroke="#FFB300"
-          strokeWidth="1.5"
-        />
-        <rect x="14" y="18" width="82" height="140" rx="8" fill="#0A1931" />
-        <circle cx="55" cy="168" r="3" fill="#FFB300" />
-      </svg>
-      {/* snapping cover */}
-      <div className="absolute inset-0 animate-cover-snap">
-        <svg viewBox="0 0 110 180" className="h-full w-full" fill="none" aria-hidden>
-          <rect x="3" y="3" width="104" height="174" rx="18" fill="#FFB300" opacity="0.85" />
-          <rect x="14" y="18" width="82" height="140" rx="8" fill="rgba(10,25,49,0.15)" />
-        </svg>
-      </div>
-    </div>
-  );
-}
-
 function ChargerCard() {
   return (
     <div className="relative mx-auto grid h-44 w-28 place-items-center">
@@ -170,10 +141,7 @@ export function ShowcaseStrip() {
           <h2 className="text-3xl font-extrabold text-gold md:text-4xl">What We Offer</h2>
           <p className="mt-2 text-sm text-white/70">Crafted accessories for every device</p>
         </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          <Card title="Mobile Covers" subtitle="100+ Designs Available" delay={0}>
-            <PhoneCoverCard />
-          </Card>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           <Card title="Fast Chargers" subtitle="All Models Supported" delay={120}>
             <ChargerCard />
           </Card>

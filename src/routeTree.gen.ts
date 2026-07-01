@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TellUsYourModelRouteImport } from './routes/tell-us-your-model'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ProductsRouteImport } from './routes/products'
@@ -23,6 +24,11 @@ import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
 import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
 
+const TellUsYourModelRoute = TellUsYourModelRouteImport.update({
+  id: '/tell-us-your-model',
+  path: '/tell-us-your-model',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRouteWithChildren
   '/profile': typeof ProfileRoute
   '/signup': typeof SignupRoute
+  '/tell-us-your-model': typeof TellUsYourModelRoute
   '/products/$id': typeof ProductsIdRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRouteWithChildren
   '/profile': typeof ProfileRoute
   '/signup': typeof SignupRoute
+  '/tell-us-your-model': typeof TellUsYourModelRoute
   '/products/$id': typeof ProductsIdRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRouteWithChildren
   '/profile': typeof ProfileRoute
   '/signup': typeof SignupRoute
+  '/tell-us-your-model': typeof TellUsYourModelRoute
   '/products/$id': typeof ProductsIdRoute
   '/api/auth/login': typeof ApiAuthLoginRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/profile'
     | '/signup'
+    | '/tell-us-your-model'
     | '/products/$id'
     | '/api/auth/login'
     | '/api/auth/logout'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/profile'
     | '/signup'
+    | '/tell-us-your-model'
     | '/products/$id'
     | '/api/auth/login'
     | '/api/auth/logout'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/profile'
     | '/signup'
+    | '/tell-us-your-model'
     | '/products/$id'
     | '/api/auth/login'
     | '/api/auth/logout'
@@ -192,6 +204,7 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRouteWithChildren
   ProfileRoute: typeof ProfileRoute
   SignupRoute: typeof SignupRoute
+  TellUsYourModelRoute: typeof TellUsYourModelRoute
   ApiAuthLoginRoute: typeof ApiAuthLoginRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthMeRoute: typeof ApiAuthMeRoute
@@ -200,6 +213,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tell-us-your-model': {
+      id: '/tell-us-your-model'
+      path: '/tell-us-your-model'
+      fullPath: '/tell-us-your-model'
+      preLoaderRoute: typeof TellUsYourModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup': {
       id: '/signup'
       path: '/signup'
@@ -315,6 +335,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRouteWithChildren,
   ProfileRoute: ProfileRoute,
   SignupRoute: SignupRoute,
+  TellUsYourModelRoute: TellUsYourModelRoute,
   ApiAuthLoginRoute: ApiAuthLoginRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthMeRoute: ApiAuthMeRoute,

@@ -109,6 +109,18 @@ function Navbar() {
             Shop
           </Link>
           <Link
+            to="/tell-us-your-model"
+            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-navy hover:bg-secondary lg:block"
+          >
+            Mobile Covers
+          </Link>
+          <Link
+            to="/tell-us-your-model"
+            className="hidden rounded-lg px-3 py-2 text-sm font-medium text-navy hover:bg-secondary lg:block"
+          >
+            Protection
+          </Link>
+          <Link
             to="/contact"
             className="hidden rounded-lg px-3 py-2 text-sm font-medium text-navy hover:bg-secondary lg:block"
           >
@@ -176,6 +188,20 @@ function Navbar() {
               className="rounded-lg px-3 py-2 text-sm font-medium text-navy hover:bg-secondary"
             >
               Shop
+            </Link>
+            <Link
+              to="/tell-us-your-model"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-3 py-2 text-sm font-medium text-navy hover:bg-secondary"
+            >
+              Mobile Covers
+            </Link>
+            <Link
+              to="/tell-us-your-model"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-3 py-2 text-sm font-medium text-navy hover:bg-secondary"
+            >
+              Protection
             </Link>
             <Link
               to="/contact"
@@ -262,6 +288,16 @@ function Footer() {
             <li>
               <Link to="/cart" className="hover:text-gold">
                 Cart
+              </Link>
+            </li>
+            <li>
+              <Link to="/tell-us-your-model" className="hover:text-gold">
+                Mobile Covers
+              </Link>
+            </li>
+            <li>
+              <Link to="/tell-us-your-model" className="hover:text-gold">
+                Protection
               </Link>
             </li>
             <li>
