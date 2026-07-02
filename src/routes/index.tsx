@@ -16,6 +16,12 @@ import {
   Sparkles,
   Globe,
   Cpu,
+  Cable,
+  BatteryCharging,
+  Watch,
+  Car,
+  Speaker,
+  HardDrive,
 } from "lucide-react";
 import { toast } from "sonner";
 import { ProductCard } from "@/components/ProductCard";
@@ -119,17 +125,23 @@ function Hero() {
           </div>
         </div>
         <div className="relative hidden md:block">
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neon/20 to-transparent blur-3xl" />
-          <div className="relative grid grid-cols-2 gap-4">
-            {[Smartphone, Headphones, Plug, Globe].map((Icon, idx) => (
-              <div
-                key={idx}
-                className="aspect-square rounded-2xl border border-glass-border glass-card p-8 transition-all hover:border-amber/40"
-                style={{ animation: `fade-up 0.6s ease-out ${idx * 0.1}s both` }}
-              >
-                <Icon className="h-full w-full text-amber" />
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-amber/20 via-transparent to-gold/10 blur-3xl" />
+          <div className="relative flex items-center justify-center p-4" style={{ animation: "fade-up 0.8s ease-out both" }}>
+            <div className="group relative w-full max-w-sm rounded-3xl border border-amber/20 glass-card p-6 transition-all duration-500 hover:border-amber/40 hover:shadow-[0_0_40px_color-mix(in_oklab,_var(--amber),_25%)] hover:-translate-y-2">
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-amber/10 to-gold/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-xl" />
+              <div className="relative">
+                <img
+                  src="https://img.drz.lazcdn.com/static/pk/p/1398a3ecc3cc5b2c2605f2cdcdab6020.jpg_720x720q80.jpg_.webp"
+                  alt="AirPods Pro"
+                  className="h-auto w-full rounded-2xl object-contain"
+                  style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.12))" }}
+                />
               </div>
-            ))}
+              <div className="mt-4 text-center">
+                <p className="text-xs font-bold uppercase tracking-widest text-amber">Premium Sound</p>
+                <p className="text-sm text-muted-foreground">Wireless Earbuds</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -161,15 +173,23 @@ function Hero() {
 
 const CATEGORY_ICONS: Record<string, typeof Plug> = {
   Chargers: Plug,
-  Headphones: Headphones,
+  "Data Cables": Cable,
+  "Power Banks": BatteryCharging,
   Earbuds: Headphones,
+  Headphones: Headphones,
+  "Smart Watches": Watch,
+  "Phone Cases": Smartphone,
+  "Screen Protection": ShieldCheck,
+  "Car Accessories": Car,
+  Audio: Speaker,
+  Storage: HardDrive,
   "Ronin Products": Package2,
   "Apple Products": Apple,
-  "Mobile Covers": Smartphone,
+  Accessories: Package2,
 };
 
 const CATEGORY_LINKS: Record<string, string> = {
-  "Mobile Covers": "/tell-us-your-model",
+  "Phone Cases": "/tell-us-your-model",
 };
 
 function CategoriesGrid() {
@@ -336,7 +356,7 @@ function MobileCoverBanner() {
               <Sparkles className="h-3.5 w-3.5" /> New Collection
             </div>
             <h3 className="mt-3 text-2xl font-extrabold text-foreground md:text-4xl">
-              Mobile Covers & Protection
+              Phone Cases & Protection
             </h3>
             <p className="mt-2 max-w-md text-sm text-muted-foreground">
               100+ designs available. Tell us your phone model and get the perfect cover delivered to your door.
