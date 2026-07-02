@@ -14,6 +14,8 @@ RUN cp node_modules/sql.js/dist/sql-wasm.wasm .output/server/_libs/sql-wasm.wasm
 
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
+ENV PORT=7860
+ENV NITRO_PORT=7860
 
 EXPOSE 7860
 
