@@ -126,21 +126,33 @@ function Hero() {
         </div>
         <div className="relative hidden md:block">
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-amber/20 via-transparent to-gold/10 blur-3xl" />
-          <div className="relative flex items-center justify-center p-4" style={{ animation: "fade-up 0.8s ease-out both" }}>
-            <div className="group relative w-full max-w-sm rounded-3xl border border-amber/20 glass-card p-6 transition-all duration-500 hover:border-amber/40 hover:shadow-[0_0_40px_color-mix(in_oklab,_var(--amber),_25%)] hover:-translate-y-2">
-              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-amber/10 to-gold/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-xl" />
-              <div className="relative">
-                <img
-                  src="https://img.drz.lazcdn.com/static/pk/p/1398a3ecc3cc5b2c2605f2cdcdab6020.jpg_720x720q80.jpg_.webp"
-                  alt="AirPods Pro"
-                  className="h-auto w-full rounded-2xl object-contain"
-                  style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.12))" }}
-                />
-              </div>
-              <div className="mt-4 text-center">
-                <p className="text-xs font-bold uppercase tracking-widest text-amber">Premium Sound</p>
-                <p className="text-sm text-muted-foreground">Wireless Earbuds</p>
-              </div>
+          <div className="relative p-4" style={{ animation: "fade-up 0.8s ease-out both" }}>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { src: "https://img.drz.lazcdn.com/static/pk/p/1398a3ecc3cc5b2c2605f2cdcdab6020.jpg_720x720q80.jpg_.webp", label: "Earbuds", sub: "Wireless Audio" },
+                { src: "https://img.drz.lazcdn.com/g/kf/Sa7184fc13fda46a3b92030daebce3985L.jpg_720x720q80.jpg_.webp", label: "Smart Watch", sub: "T800 Ultra" },
+                { src: "https://img.drz.lazcdn.com/static/pk/p/16aab81eaf42d7da32aa5f7d13f07091.jpg_720x720q80.jpg_.webp", label: "Chargers", sub: "Fast Charging" },
+                { src: "https://img.drz.lazcdn.com/static/pk/p/bb72437261ce32e7070c8e95d229d5ed.jpg_720x720q80.jpg_.webp", label: "Cases", sub: "Phone Protection" },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group aspect-square rounded-2xl border border-amber/15 glass-card p-5 transition-all duration-300 hover:border-amber/40 hover:shadow-[0_0_30px_color-mix(in_oklab,_var(--amber),_20%)] hover:-translate-y-1"
+                  style={{ animation: `fade-up 0.6s ease-out ${idx * 0.1}s both` }}
+                >
+                  <div className="flex h-full flex-col items-center justify-center gap-2">
+                    <img
+                      src={item.src}
+                      alt={item.label}
+                      className="h-24 w-24 rounded-xl object-contain transition-transform duration-300 group-hover:scale-110"
+                      style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.1))" }}
+                    />
+                    <div className="text-center">
+                      <p className="text-xs font-bold text-foreground">{item.label}</p>
+                      <p className="text-[10px] text-muted-foreground">{item.sub}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
