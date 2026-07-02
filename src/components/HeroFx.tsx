@@ -24,7 +24,7 @@ function Particles() {
             left: `${b.left}%`,
             width: b.size,
             height: b.size,
-              background: b.gold ? "#D97706" : "#78350F",
+            background: b.gold ? "#D97706" : "#78350F",
             ["--bubble-dur" as never]: `${b.dur}s`,
             ["--bubble-op" as never]: b.op,
             animationDelay: `${b.delay}s`,
@@ -39,7 +39,7 @@ function FloatingCover() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute left-2 top-1/2 z-[1] hidden -translate-y-1/2 md:block"
+      className="pointer-events-none absolute right-2 top-1/2 z-[1] hidden -translate-y-1/2 md:block"
     >
       <div className="animate-float-cover drop-shadow-[0_20px_30px_rgba(120,53,15,0.35)]">
         <svg width="90" height="160" viewBox="0 0 90 160" fill="none">

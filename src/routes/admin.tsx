@@ -375,6 +375,21 @@ function ProductForm({
               className="w-full rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-gold"
             />
           </Field>
+          <Field label="Variants (comma-separated labels, optional)">
+            <input
+              value={p.variants?.map((v) => v.label).join(", ") ?? ""}
+              onChange={(e) =>
+                setP({
+                  ...p,
+                  variants: e.target.value
+                    ? e.target.value.split(",").map((s) => ({ label: s.trim() }))
+                    : undefined,
+                })
+              }
+              placeholder="Black, White, Blue"
+              className="w-full rounded-lg border border-border px-3 py-2 text-sm outline-none focus:border-gold"
+            />
+          </Field>
         </div>
         <div className="mt-5 flex gap-2">
           <button

@@ -19,10 +19,12 @@ import {
 import { toast } from "sonner";
 import { ProductImage } from "@/components/ProductImage";
 import { ProductCard } from "@/components/ProductCard";
+import { ProductDetailSkeleton } from "@/components/Skeleton";
 import { useCart, useProduct, useProducts, useWishlist, formatPrice } from "@/lib/store";
 import { waProduct } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/products/$id")({
+  pendingComponent: ProductDetailSkeleton,
   component: ProductDetail,
 });
 
@@ -153,8 +155,15 @@ function ProductDetail() {
   const { add } = useCart();
   const { has, toggle } = useWishlist();
   const [qty, setQty] = useState(1);
+  const [selectedVariant, setSelectedVariant] = useState(0);
 
   if (!product) throw notFound();
+
+  const variants = product.variants;
+  const activeVariant = variants?.[selectedVariant];
+  const displayPrice = activeVariant?.price ?? product.price;
+  const displayStock = activeVariant?.stock ?? product.stock;
+  const displayImage = activeVariant?.image ?? product.image;
 
   const detail = PRODUCT_DETAILS[product.id];
   const longDesc = detail?.description ?? product.description;
@@ -170,8 +179,8 @@ function ProductDetail() {
     .slice(0, 4);
   const wished = has(product.id);
 
-  const originalPrice = Math.round(product.price / 0.9);
-  const savings = originalPrice - product.price;
+  const originalPrice = Math.round(displayPrice / 0.9);
+  const savings = originalPrice - displayPrice;
 
   return (
     <div className="bg-gradient-to-b from-secondary/40 to-background">
@@ -210,7 +219,7 @@ function ProductDetail() {
               </button>
               <div className="aspect-square overflow-hidden">
                 <ProductImage
-                  src={product.image}
+                  src={displayImage}
                   alt={product.name}
                   className="h-full w-full object-contain p-8 transition-transform duration-500 group-hover:scale-110"
                 />
@@ -220,7 +229,7 @@ function ProductDetail() {
             <div className="mt-3 flex gap-2">
               <div className="h-20 w-20 overflow-hidden rounded-lg border-2 border-gold bg-background/50">
                 <ProductImage
-                  src={product.image}
+                  src={displayImage}
                   alt={product.name}
                   className="h-full w-full object-contain p-2"
                 />
@@ -237,6 +246,33 @@ function ProductDetail() {
               {product.name}
             </h1>
 
+            {variants && variants.length > 0 && (
+              <div className="mt-4">
+                <p className="mb-2 text-xs font-bold uppercase tracking-wider text-foreground">
+                  {variants[0].label.includes("Strap") ? "Strap Color" : "Color"}:
+                  <span className="ml-1 text-amber">{activeVariant?.label}</span>
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {variants.map((v, idx) => (
+                    <button
+                      key={v.label}
+                      onClick={() => setSelectedVariant(idx)}
+                      className={`rounded-lg border px-4 py-2 text-xs font-bold transition-all ${
+                        idx === selectedVariant
+                          ? "border-amber bg-amber text-navy shadow-[0_0_12px_color-mix(in_oklab,_var(--amber),_30%)]"
+                          : "border-glass-border bg-background/50 text-foreground hover:border-amber/40 hover:bg-amber/10"
+                      }`}
+                    >
+                      {v.label}
+                      {v.price && v.price !== product.price && (
+                        <span className="ml-1">(+Rs.{v.price - product.price})</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Rating */}
             <div className="mt-3 flex items-center gap-2">
               <div className="flex">
@@ -252,7 +288,7 @@ function ProductDetail() {
             {/* Price */}
             <div className="mt-5 flex flex-wrap items-baseline gap-3">
               <span className="text-4xl font-extrabold text-foreground">
-                {formatPrice(product.price)}
+                {formatPrice(displayPrice)}
               </span>
               <span className="text-lg text-muted-foreground line-through">
                 {formatPrice(originalPrice)}
@@ -262,10 +298,10 @@ function ProductDetail() {
               </span>
             </div>
             <div className="mt-1 text-sm">
-              {product.stock > 5 ? (
+              {displayStock > 5 ? (
                 <span className="font-bold text-amber">✓ In Stock — Ready to ship</span>
-              ) : product.stock > 0 ? (
-                <span className="font-bold text-destructive">Hurry! Only {product.stock} left</span>
+              ) : displayStock > 0 ? (
+                <span className="font-bold text-destructive">Hurry! Only {displayStock} left</span>
               ) : (
                 <span className="font-bold text-destructive">Out of Stock</span>
               )}
@@ -332,7 +368,7 @@ function ProductDetail() {
             {/* CTAs */}
             <div className="mt-4 flex flex-col gap-2 sm:flex-row">
               <button
-                disabled={product.stock === 0}
+                disabled={displayStock === 0}
                 onClick={() => {
                   add(product.id, qty);
                   toast.success(`Added ${qty} to cart 🛒`);

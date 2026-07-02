@@ -1,3 +1,10 @@
+export type ProductVariant = {
+  label: string;
+  price?: number;
+  stock?: number;
+  image?: string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -7,6 +14,7 @@ export type Product = {
   image: string;
   stock: number;
   description: string;
+  variants?: ProductVariant[];
 };
 
 export const PRODUCTS_VERSION = 2;
@@ -1329,6 +1337,11 @@ export const SEED_PRODUCTS: Product[] = [
     image: "https://img.drz.lazcdn.com/g/kf/Sa7184fc13fda46a3b92030daebce3985L.jpg_720x720q80.jpg_.webp",
     stock: 12,
     description: "T800 Ultra smart watch with premium design and features.",
+    variants: [
+      { label: "Black Strap", stock: 5 },
+      { label: "Silver Strap", stock: 4 },
+      { label: "Gold Strap", stock: 3 },
+    ],
   },
   {
     id: "t900-ultra",
@@ -1481,6 +1494,12 @@ export const SEED_PRODUCTS: Product[] = [
     image: "https://img.drz.lazcdn.com/static/pk/p/bb72437261ce32e7070c8e95d229d5ed.jpg_720x720q80.jpg_.webp",
     stock: 40,
     description: "Soft silicone case for everyday protection.",
+    variants: [
+      { label: "Black", stock: 15 },
+      { label: "Clear", stock: 10 },
+      { label: "Blue", stock: 8 },
+      { label: "Pink", stock: 7 },
+    ],
   },
   {
     id: "transparent-case",

@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { useProducts } from "@/lib/store";
 import { CATEGORIES } from "@/lib/products";
 import { SlidersHorizontal, X } from "lucide-react";
+import { ProductsPageSkeleton } from "@/components/Skeleton";
 
 const searchSchema = z.object({
   q: z.string().optional(),
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/products")({
       },
     ],
   }),
+  pendingComponent: ProductsPageSkeleton,
   component: ProductsPage,
 });
 

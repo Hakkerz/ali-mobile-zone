@@ -113,13 +113,13 @@ function Navbar() {
             to="/tell-us-your-model"
             className="hidden rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary lg:block"
           >
-            Mobile Covers
+            Phone Cases
           </Link>
           <Link
             to="/tell-us-your-model"
             className="hidden rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary lg:block"
           >
-            Protection
+            Screen Protection
           </Link>
           <Link
             to="/contact"
@@ -195,7 +195,7 @@ function Navbar() {
               onClick={() => setOpen(false)}
               className="rounded-lg px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary"
             >
-              Mobile Covers
+              Phone Cases
             </Link>
             <Link
               to="/tell-us-your-model"
@@ -286,10 +286,10 @@ function Footer() {
               <Link to="/cart" className="transition-colors hover:text-amber">Cart</Link>
             </li>
             <li>
-              <Link to="/tell-us-your-model" className="transition-colors hover:text-amber">Mobile Covers</Link>
+              <Link to="/tell-us-your-model" className="transition-colors hover:text-amber">Phone Cases</Link>
             </li>
             <li>
-              <Link to="/tell-us-your-model" className="transition-colors hover:text-amber">Protection</Link>
+              <Link to="/tell-us-your-model" className="transition-colors hover:text-amber">Screen Protection</Link>
             </li>
             <li>
               <Link to="/contact" className="transition-colors hover:text-amber">Contact</Link>
@@ -421,7 +421,9 @@ export function Layout({ children }: { children: ReactNode }) {
       <Particles />
       {!isAdmin && <AnnouncementBar />}
       {!isAdmin && <Navbar />}
-      <main className="flex-1 relative z-[1]">{children}</main>
+      <main className="flex-1 relative z-[1]">
+        <div key={path} className="page-enter">{children}</div>
+      </main>
       {!isAdmin && <Footer />}
       <FloatingWhatsApp />
     </div>
