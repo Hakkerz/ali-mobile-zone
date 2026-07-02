@@ -28,7 +28,7 @@ function CartPage() {
         </p>
         <Link
           to="/products"
-          className="mt-6 inline-block rounded-lg bg-whatsapp px-6 py-3 text-sm font-bold text-white hover:bg-whatsapp-dark"
+          className="mt-6 inline-block rounded-lg bg-amber px-6 py-3 text-sm font-bold text-navy hover:brightness-110"
         >
           Continue Shopping
         </Link>
@@ -129,7 +129,7 @@ function CartPage() {
           </div>
           <button
             onClick={() => setOpen(true)}
-            className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-whatsapp px-4 py-3 text-sm font-extrabold text-white hover:bg-whatsapp-dark"
+            className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-amber px-4 py-3 text-sm font-extrabold text-navy hover:brightness-110"
           >
             <MessageCircle className="h-4 w-4" /> Order via WhatsApp 💬
           </button>

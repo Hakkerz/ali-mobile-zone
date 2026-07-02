@@ -24,7 +24,7 @@ const MARQUEE =
 
 function AnnouncementBar() {
   return (
-    <div className="overflow-hidden bg-gradient-to-r from-whatsapp to-whatsapp-dark py-2 text-white shadow-[0_0_20px_color-mix(in_oklab,_var(--whatsapp),_30%)]">
+    <div className="overflow-hidden bg-gradient-to-r from-warm to-warm-dark py-2 text-white shadow-[0_0_20px_color-mix(in_oklab,_var(--amber),_30%)]">
       <div className="flex w-max animate-marquee whitespace-nowrap text-sm font-bold">
         <span className="px-8">{MARQUEE}</span>
         <span className="px-8">{MARQUEE}</span>
@@ -58,7 +58,7 @@ function Navbar() {
     <header className="sticky top-0 z-40 border-b border-glass-border glass-card rounded-none">
       <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="grid h-9 w-9 place-items-center rounded-lg bg-whatsapp text-white shadow-[0_0_12px_color-mix(in_oklab,_var(--whatsapp),_40%)] transition-all group-hover:shadow-[0_0_20px_color-mix(in_oklab,_var(--whatsapp),_60%)]">
+          <div className="grid h-9 w-9 place-items-center rounded-lg bg-amber text-navy shadow-[0_0_12px_color-mix(in_oklab,_var(--amber),_40%)] transition-all group-hover:shadow-[0_0_20px_color-mix(in_oklab,_var(--amber),_60%)]">
             <Smartphone className="h-5 w-5" />
           </div>
           <div className="hidden sm:block">
@@ -73,7 +73,7 @@ function Navbar() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search chargers, headphones, earbuds..."
-            className="w-full rounded-full bg-secondary py-2 pl-10 pr-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-neon focus:bg-background"
+            className="w-full rounded-full bg-secondary py-2 pl-10 pr-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-amber focus:bg-background"
           />
           {suggestions.length > 0 && (
             <div className="absolute left-0 right-0 top-full mt-2 overflow-hidden rounded-xl glass-card border-glass-border shadow-lg">
@@ -133,7 +133,7 @@ function Navbar() {
           >
             <ShoppingCart className="h-5 w-5" />
             {count > 0 && (
-              <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-whatsapp px-1 text-[10px] font-bold text-white shadow-[0_0_8px_color-mix(in_oklab,_var(--whatsapp),_50%)]">
+              <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-amber px-1 text-[10px] font-bold text-navy shadow-[0_0_8px_color-mix(in_oklab,_var(--amber),_50%)]">
                 {count}
               </span>
             )}
@@ -155,7 +155,7 @@ function Navbar() {
               </Link>
               <Link
                 to="/signup"
-                className="hidden rounded-lg bg-whatsapp px-3 py-2 text-sm font-medium text-white shadow-[0_0_12px_color-mix(in_oklab,_var(--whatsapp),_30%)] transition-all hover:shadow-[0_0_20px_color-mix(in_oklab,_var(--whatsapp),_50%)] hover:brightness-110 md:inline-flex"
+                className="hidden rounded-lg bg-amber px-3 py-2 text-sm font-medium text-navy shadow-[0_0_12px_color-mix(in_oklab,_var(--amber),_30%)] transition-all hover:shadow-[0_0_20px_color-mix(in_oklab,_var(--amber),_50%)] hover:brightness-110 md:inline-flex"
               >
                 Sign up
               </Link>
@@ -179,7 +179,7 @@ function Navbar() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search products..."
-              className="w-full rounded-full bg-secondary py-2 pl-10 pr-4 text-sm text-foreground outline-none placeholder:text-muted-foreground/60 focus:border-neon focus:bg-background"
+              className="w-full rounded-full bg-secondary py-2 pl-10 pr-4 text-sm text-foreground outline-none placeholder:text-muted-foreground/60 focus:border-amber focus:bg-background"
             />
           </form>
           <div className="flex flex-col gap-1">
@@ -257,7 +257,7 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-2">
-            <div className="grid h-10 w-10 place-items-center rounded-lg bg-whatsapp text-white shadow-[0_0_12px_color-mix(in_oklab,_var(--whatsapp),_40%)]">
+            <div className="grid h-10 w-10 place-items-center rounded-lg bg-amber text-navy shadow-[0_0_12px_color-mix(in_oklab,_var(--amber),_40%)]">
               <Smartphone className="h-5 w-5" />
             </div>
             <div>
@@ -272,35 +272,35 @@ function Footer() {
           </p>
         </div>
         <div>
-          <div className="mb-3 text-sm font-bold uppercase tracking-widest text-neon">
+          <div className="mb-3 text-sm font-bold uppercase tracking-widest text-gold">
             Quick Links
           </div>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
-              <Link to="/" className="transition-colors hover:text-neon">Home</Link>
+              <Link to="/" className="transition-colors hover:text-amber">Home</Link>
             </li>
             <li>
-              <Link to="/products" className="transition-colors hover:text-neon">All Products</Link>
+              <Link to="/products" className="transition-colors hover:text-amber">All Products</Link>
             </li>
             <li>
-              <Link to="/cart" className="transition-colors hover:text-neon">Cart</Link>
+              <Link to="/cart" className="transition-colors hover:text-amber">Cart</Link>
             </li>
             <li>
-              <Link to="/tell-us-your-model" className="transition-colors hover:text-neon">Mobile Covers</Link>
+              <Link to="/tell-us-your-model" className="transition-colors hover:text-amber">Mobile Covers</Link>
             </li>
             <li>
-              <Link to="/tell-us-your-model" className="transition-colors hover:text-neon">Protection</Link>
+              <Link to="/tell-us-your-model" className="transition-colors hover:text-amber">Protection</Link>
             </li>
             <li>
-              <Link to="/contact" className="transition-colors hover:text-neon">Contact</Link>
+              <Link to="/contact" className="transition-colors hover:text-amber">Contact</Link>
             </li>
             <li>
-              <Link to="/admin" className="transition-colors hover:text-neon">Admin</Link>
+              <Link to="/admin" className="transition-colors hover:text-amber">Admin</Link>
             </li>
           </ul>
         </div>
         <div>
-          <div className="mb-3 text-sm font-bold uppercase tracking-widest text-neon">
+          <div className="mb-3 text-sm font-bold uppercase tracking-widest text-gold">
             Get in Touch
           </div>
           <a
@@ -314,13 +314,13 @@ function Footer() {
           <div className="mt-4 flex gap-2">
             <a
               href="#"
-              className="grid h-9 w-9 place-items-center rounded-full glass-card text-muted-foreground hover:text-neon hover:border-neon/50"
+              className="grid h-9 w-9 place-items-center rounded-full glass-card text-muted-foreground hover:text-amber hover:border-amber/50"
             >
               <Instagram className="h-4 w-4" />
             </a>
             <a
               href="#"
-              className="grid h-9 w-9 place-items-center rounded-full glass-card text-muted-foreground hover:text-neon hover:border-neon/50"
+              className="grid h-9 w-9 place-items-center rounded-full glass-card text-muted-foreground hover:text-amber hover:border-amber/50"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.86a8.16 8.16 0 0 0 4.77 1.52V6.93a4.85 4.85 0 0 1-1.84-.24z" />
@@ -328,7 +328,7 @@ function Footer() {
             </a>
             <a
               href="#"
-              className="grid h-9 w-9 place-items-center rounded-full glass-card text-muted-foreground hover:text-neon hover:border-neon/50"
+              className="grid h-9 w-9 place-items-center rounded-full glass-card text-muted-foreground hover:text-amber hover:border-amber/50"
             >
               <Youtube className="h-4 w-4" />
             </a>

@@ -257,13 +257,13 @@ function ProductDetail() {
               <span className="text-lg text-muted-foreground line-through">
                 {formatPrice(originalPrice)}
               </span>
-              <span className="rounded-md bg-whatsapp/15 px-2 py-0.5 text-xs font-bold text-whatsapp-dark">
+              <span className="rounded-md bg-amber/15 px-2 py-0.5 text-xs font-bold text-amber-dark">
                 10% OFF · Save {formatPrice(savings)}
               </span>
             </div>
             <div className="mt-1 text-sm">
               {product.stock > 5 ? (
-                <span className="font-bold text-whatsapp-dark">✓ In Stock — Ready to ship</span>
+                <span className="font-bold text-amber">✓ In Stock — Ready to ship</span>
               ) : product.stock > 0 ? (
                 <span className="font-bold text-destructive">Hurry! Only {product.stock} left</span>
               ) : (
@@ -282,7 +282,7 @@ function ProductDetail() {
               <ul className="space-y-1.5">
                 {features.map((f, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-foreground/85">
-                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-whatsapp/15 text-whatsapp-dark">
+                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-amber/15 text-amber">
                       <Check className="h-3 w-3" strokeWidth={3} />
                     </span>
                     <span>{f}</span>
@@ -301,9 +301,9 @@ function ProductDetail() {
               ].map((b, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 rounded-lg bg-whatsapp/8 border border-whatsapp/20 px-3 py-2 text-xs font-medium text-foreground"
+                  className="flex items-center gap-2 rounded-lg bg-amber/8 border border-amber/20 px-3 py-2 text-xs font-medium text-foreground"
                 >
-                  <b.icon className="h-4 w-4 shrink-0 text-whatsapp-dark" />
+                  <b.icon className="h-4 w-4 shrink-0 text-amber" />
                   <span>{b.text}</span>
                 </div>
               ))}
@@ -337,7 +337,7 @@ function ProductDetail() {
                   add(product.id, qty);
                   toast.success(`Added ${qty} to cart 🛒`);
                 }}
-                className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-whatsapp px-5 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-whatsapp-dark hover:scale-[1.02] disabled:opacity-50"
+                className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-amber px-5 py-3.5 text-sm font-bold text-navy shadow-md transition hover:bg-amber-dark hover:scale-[1.02] disabled:opacity-50"
               >
                 <ShoppingCart className="h-4 w-4" /> Add to Cart
               </button>
@@ -360,7 +360,7 @@ function ProductDetail() {
                 { icon: RotateCcw, label: "Easy Returns" },
               ].map((g, i) => (
                 <div key={i} className="flex flex-col items-center gap-1 text-center">
-                  <g.icon className="h-5 w-5 text-gold" />
+                  <g.icon className="h-5 w-5 text-amber" />
                   <span className="text-[11px] font-bold uppercase tracking-wide text-foreground">
                     {g.label}
                   </span>

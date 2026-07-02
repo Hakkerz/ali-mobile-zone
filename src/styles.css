@@ -32,59 +32,68 @@
   --color-navy-light: var(--navy-light);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
-  --color-whatsapp: var(--blue);
-  --color-whatsapp-dark: var(--blue-dark);
-  --color-neon: var(--blue);
-  --color-neon-glow: var(--blue-dark);
-  --color-blue: var(--blue);
-  --color-blue-dark: var(--blue-dark);
-  --color-blue-light: var(--blue-light);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-dark: var(--whatsapp-dark);
+  --color-neon: var(--neon);
+  --color-neon-glow: var(--neon-glow);
+  --color-amber: var(--amber);
+  --color-amber-dark: var(--amber-dark);
+  --color-amber-light: var(--amber-light);
+  --color-warm: var(--warm);
+  --color-warm-dark: var(--warm-dark);
   --color-glass: var(--glass);
   --color-glass-border: var(--glass-border);
-  --shadow-card: 0 4px 30px color-mix(in oklab, var(--neon) 10%, transparent);
+  --shadow-card: 0 4px 30px color-mix(in oklab, var(--neon) 12%, transparent);
   --shadow-card-hover:
-    0 8px 40px color-mix(in oklab, var(--neon) 25%, transparent),
-    0 0 20px color-mix(in oklab, var(--neon) 15%, transparent);
+    0 8px 40px color-mix(in oklab, var(--neon) 28%, transparent),
+    0 0 20px color-mix(in oklab, var(--neon) 18%, transparent);
   --shadow-glow-whatsapp: 0 0 20px color-mix(in oklab, var(--whatsapp) 50%, transparent);
   --shadow-glow-gold: 0 0 20px color-mix(in oklab, var(--gold) 50%, transparent);
 }
 
 :root {
   --radius: 0.75rem;
-  --navy: oklch(0.18 0.04 260);
-  --navy-light: oklch(0.25 0.05 260);
-  --gold: oklch(0.82 0.17 80);
-  --gold-light: oklch(0.9 0.13 85);
-  --whatsapp: var(--blue);
-  --whatsapp-dark: var(--blue-dark);
-  --neon: var(--blue);
-  --neon-glow: var(--blue-dark);
-  --blue: oklch(0.65 0.22 260);
-  --blue-dark: oklch(0.52 0.2 260);
-  --blue-light: oklch(0.78 0.14 250);
+  --navy: oklch(0 0 0);
+  --navy-light: oklch(0.25 0 0);
 
-  --background: oklch(0.99 0.005 260);
-  --foreground: oklch(0.18 0.04 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.04 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.04 260);
-  --primary: var(--blue);
+  --gold: oklch(0.78 0.15 75);
+  --gold-light: oklch(0.88 0.1 80);
+
+  --whatsapp: oklch(0.65 0.2 145);
+  --whatsapp-dark: oklch(0.5 0.18 145);
+
+  --neon: oklch(0.78 0.15 75);
+  --neon-glow: oklch(0.65 0.18 75);
+
+  --amber: oklch(0.78 0.15 75);
+  --amber-dark: oklch(0.65 0.18 75);
+  --amber-light: oklch(0.88 0.1 80);
+
+  --warm: oklch(0.35 0.04 50);
+  --warm-dark: oklch(0.25 0.04 50);
+
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0 0 0);
+  --card: oklch(0.96 0.003 70);
+  --card-foreground: oklch(0 0 0);
+  --popover: oklch(0.96 0.003 70);
+  --popover-foreground: oklch(0 0 0);
+  --primary: var(--amber);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.01 260);
-  --secondary-foreground: oklch(0.18 0.04 260);
-  --muted: oklch(0.96 0.01 260);
-  --muted-foreground: oklch(0.5 0.03 260);
-  --accent: var(--blue-light);
-  --accent-foreground: oklch(0.18 0.04 260);
-  --destructive: oklch(0.6 0.22 27);
+  --secondary: oklch(0.92 0.005 70);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.92 0.005 70);
+  --muted-foreground: oklch(0.45 0.01 50);
+  --accent: var(--amber-light);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: color-mix(in oklab, var(--neon) 15%, transparent);
-  --input: color-mix(in oklab, var(--neon) 15%, transparent);
+  --border: color-mix(in oklab, var(--amber) 25%, transparent);
+  --input: color-mix(in oklab, var(--amber) 25%, transparent);
   --ring: var(--neon);
 
-  --glass: color-mix(in oklab, oklch(1 0 0) 70%, transparent);
-  --glass-border: color-mix(in oklab, var(--neon) 12%, transparent);
+  --glass: color-mix(in oklab, oklch(0.97 0.003 70) 80%, transparent);
+  --glass-border: color-mix(in oklab, var(--amber) 18%, transparent);
 }
 
 @layer base {
@@ -96,8 +105,8 @@
     color: var(--color-foreground);
     font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, var(--blue) 4%, transparent) 0%, transparent 100%),
-      radial-gradient(ellipse 40% 30% at 80% 20%, color-mix(in oklab, var(--blue-light) 3%, transparent) 0%, transparent 100%);
+      radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, var(--amber) 4%, transparent) 0%, transparent 100%),
+      radial-gradient(ellipse 40% 30% at 80% 20%, color-mix(in oklab, var(--gold) 3%, transparent) 0%, transparent 100%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4 {
@@ -163,7 +172,7 @@
   text-shadow: 0 0 10px color-mix(in oklab, var(--neon) 50%, transparent);
 }
 .text-gradient {
-  background: linear-gradient(135deg, var(--blue), var(--blue-light));
+  background: linear-gradient(135deg, var(--gold), var(--amber-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -392,7 +401,7 @@
   100% { background-position: 200% 0; }
 }
 .shimmer-text {
-  background: linear-gradient(90deg, var(--foreground) 0%, var(--blue) 50%, var(--gold) 100%);
+  background: linear-gradient(90deg, var(--foreground) 0%, var(--gold) 50%, var(--amber-light) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -27,7 +27,7 @@ function ContactPage() {
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         <div className="rounded-3xl glass-card p-8 text-white">
-          <div className="grid h-14 w-14 place-items-center rounded-2xl bg-whatsapp">
+          <div className="grid h-14 w-14 place-items-center rounded-2xl bg-amber">
             <MessageCircle className="h-7 w-7" />
           </div>
           <h3 className="mt-4 text-2xl font-extrabold">Chat on WhatsApp</h3>
@@ -44,7 +44,7 @@ function ContactPage() {
             href={waGeneral()}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 text-sm font-bold text-white hover:bg-whatsapp-dark"
+            className="mt-5 inline-flex items-center gap-2 rounded-lg bg-amber px-6 py-3 text-sm font-bold text-navy hover:brightness-110"
           >
             <MessageCircle className="h-4 w-4" /> Open WhatsApp
           </a>

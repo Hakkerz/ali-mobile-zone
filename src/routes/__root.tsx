@@ -26,7 +26,7 @@ function NotFoundComponent() {
         </p>
         <Link
           to="/"
-          className="mt-6 rounded-lg bg-whatsapp px-6 py-3 text-sm font-bold text-white hover:bg-whatsapp-dark"
+          className="mt-6 rounded-lg bg-amber px-6 py-3 text-sm font-bold text-navy hover:brightness-110"
         >
           Go back to shop
         </Link>
@@ -54,7 +54,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="rounded-md bg-whatsapp px-4 py-2 text-sm font-bold text-white"
+            className="rounded-md bg-amber px-4 py-2 text-sm font-bold text-navy"
           >
             Try again
           </button>

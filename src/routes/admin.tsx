@@ -56,7 +56,7 @@ function Login({ onLogin }: { onLogin: (pw: string) => void }) {
           placeholder="Password"
           className="mt-5 w-full rounded-lg border border-border px-3 py-2.5 text-sm outline-none focus:border-gold"
         />
-        <button className="mt-3 w-full rounded-lg bg-whatsapp py-3 text-sm font-bold text-white hover:bg-whatsapp-dark">
+        <button className="mt-3 w-full rounded-lg bg-amber py-3 text-sm font-bold text-navy hover:brightness-110">
           Sign in
         </button>
         <Link
@@ -131,7 +131,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
                 Icon: ShoppingBag,
                 label: "WhatsApp Orders",
                 value: orders.length,
-                color: "bg-whatsapp text-white",
+                color: "bg-amber text-navy",
               },
               {
                 Icon: Tag,
@@ -176,7 +176,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
               <h2 className="text-xl font-extrabold text-foreground">Products ({products.length})</h2>
               <button
                 onClick={() => setCreating(true)}
-                className="inline-flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-2 text-sm font-bold text-white hover:bg-whatsapp-dark"
+                className="inline-flex items-center gap-2 rounded-lg bg-amber px-4 py-2 text-sm font-bold text-navy hover:brightness-110"
               >
                 <Plus className="h-4 w-4" /> Add Product
               </button>
@@ -384,7 +384,7 @@ function ProductForm({
           >
             Cancel
           </button>
-          <button className="flex-1 rounded-lg bg-whatsapp py-2.5 text-sm font-bold text-white hover:bg-whatsapp-dark">
+          <button className="flex-1 rounded-lg bg-amber py-2.5 text-sm font-bold text-navy hover:brightness-110">
             Save
           </button>
         </div>
@@ -490,7 +490,7 @@ function OrdersPanel({
             onChange={(e) => setF({ ...f, notes: e.target.value })}
             className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:border-gold"
           />
-          <button className="w-full rounded-lg bg-whatsapp py-2.5 text-sm font-bold text-white hover:bg-whatsapp-dark">
+          <button className="w-full rounded-lg bg-amber py-2.5 text-sm font-bold text-navy hover:brightness-110">
             Add order
           </button>
         </div>

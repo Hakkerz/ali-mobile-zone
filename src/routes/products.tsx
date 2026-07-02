@@ -82,7 +82,7 @@ function ProductsPage() {
         <div className="space-y-1.5">
           <button
             onClick={() => update({ category: undefined })}
-            className={`block w-full rounded-md px-2 py-1 text-left text-sm ${!search.category ? "bg-whatsapp text-white" : "hover:bg-secondary"}`}
+            className={`block w-full rounded-md px-2 py-1 text-left text-sm ${!search.category ? "bg-amber text-navy" : "hover:bg-secondary"}`}
           >
             All
           </button>
@@ -90,7 +90,7 @@ function ProductsPage() {
             <button
               key={c}
               onClick={() => update({ category: c })}
-              className={`block w-full rounded-md px-2 py-1 text-left text-sm ${search.category === c ? "bg-whatsapp text-white" : "hover:bg-secondary"}`}
+              className={`block w-full rounded-md px-2 py-1 text-left text-sm ${search.category === c ? "bg-amber text-navy" : "hover:bg-secondary"}`}
             >
               {c}
             </button>
@@ -102,7 +102,7 @@ function ProductsPage() {
         <div className="space-y-1.5">
           <button
             onClick={() => update({ brand: undefined })}
-            className={`block w-full rounded-md px-2 py-1 text-left text-sm ${!search.brand ? "bg-whatsapp text-white" : "hover:bg-secondary"}`}
+            className={`block w-full rounded-md px-2 py-1 text-left text-sm ${!search.brand ? "bg-amber text-navy" : "hover:bg-secondary"}`}
           >
             All
           </button>
@@ -110,7 +110,7 @@ function ProductsPage() {
             <button
               key={b}
               onClick={() => update({ brand: b })}
-              className={`block w-full rounded-md px-2 py-1 text-left text-sm ${search.brand === b ? "bg-whatsapp text-white" : "hover:bg-secondary"}`}
+              className={`block w-full rounded-md px-2 py-1 text-left text-sm ${search.brand === b ? "bg-amber text-navy" : "hover:bg-secondary"}`}
             >
               {b}
             </button>
@@ -192,7 +192,7 @@ function ProductsPage() {
                         ({ ...prev, page: i + 1 }) as never,
                     })
                   }
-                  className={`h-9 w-9 rounded-lg text-sm font-bold ${page === i + 1 ? "bg-whatsapp text-white" : "border border-glass-border bg-background/50 text-foreground hover:brightness-125"}`}
+                  className={`h-9 w-9 rounded-lg text-sm font-bold ${page === i + 1 ? "bg-amber text-navy" : "border border-glass-border bg-background/50 text-foreground hover:brightness-125"}`}
                 >
                   {i + 1}
                 </button>

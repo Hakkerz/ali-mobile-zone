@@ -51,7 +51,7 @@ export function ProductCard({ product }: { product: Product }) {
           </span>
         )}
         {isNew && (
-          <span className="rounded-full bg-whatsapp px-2 py-0.5 text-[10px] font-bold text-white shadow-[0_0_10px_color-mix(in_oklab,_var(--whatsapp),_50%)]">
+          <span className="rounded-full bg-amber px-2 py-0.5 text-[10px] font-bold text-navy shadow-[0_0_10px_color-mix(in_oklab,_var(--amber),_50%)]">
             NEW
           </span>
         )}
@@ -72,7 +72,7 @@ export function ProductCard({ product }: { product: Product }) {
           toggle(product.id);
           toast(wished ? "Removed from wishlist" : "Added to wishlist ❤️");
         }}
-        className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full glass-card hover:border-whatsapp/50"
+        className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full glass-card hover:border-amber/50"
         style={{ transform: "translateZ(20px)" }}
       >
         <Heart
@@ -100,7 +100,7 @@ export function ProductCard({ product }: { product: Product }) {
           <Link
             to="/products/$id"
             params={{ id: product.id }}
-            className="line-clamp-2 text-sm font-semibold text-foreground transition-colors hover:text-neon"
+            className="line-clamp-2 text-sm font-semibold text-foreground transition-colors hover:text-amber"
           >
             {product.name}
           </Link>
@@ -113,7 +113,7 @@ export function ProductCard({ product }: { product: Product }) {
               add(product.id);
               toast.success("Added to cart 🛒");
             }}
-            className="flex items-center justify-center gap-2 rounded-lg bg-whatsapp px-3 py-2 text-xs font-bold text-white shadow-[0_0_12px_color-mix(in_oklab,_var(--whatsapp),_30%)] transition-all hover:shadow-[0_0_20px_color-mix(in_oklab,_var(--whatsapp),_50%)] hover:brightness-110 disabled:opacity-50"
+            className="flex items-center justify-center gap-2 rounded-lg bg-amber px-3 py-2 text-xs font-bold text-navy shadow-[0_0_12px_color-mix(in_oklab,_var(--amber),_30%)] transition-all hover:shadow-[0_0_20px_color-mix(in_oklab,_var(--amber),_50%)] hover:brightness-110 disabled:opacity-50"
           >
             <ShoppingCart className="h-4 w-4" /> Add to Cart
           </button>
