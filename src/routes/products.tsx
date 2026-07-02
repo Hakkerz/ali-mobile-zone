@@ -9,7 +9,6 @@ import { SlidersHorizontal, X } from "lucide-react";
 const searchSchema = z.object({
   q: z.string().optional(),
   category: z.string().optional(),
-  brand: z.string().optional(),
   sort: z.enum(["popular", "newest", "price-asc", "price-desc"]).optional(),
   page: z.number().optional(),
 });
@@ -34,10 +33,8 @@ function ProductsPage() {
   const { products } = useProducts();
   const search = Route.useSearch();
   const navigate = Route.useNavigate();
-  const [maxPrice, setMaxPrice] = useState(15000);
+  const [maxPrice, setMaxPrice] = useState(20000);
   const [open, setOpen] = useState(false);
-
-  const brands = useMemo(() => Array.from(new Set(products.map((p) => p.brand))), [products]);
 
   const filtered = useMemo(() => {
     let list = products;
@@ -48,7 +45,6 @@ function ProductsPage() {
       );
     }
     if (search.category) list = list.filter((p) => p.category === search.category);
-    if (search.brand) list = list.filter((p) => p.brand === search.brand);
     list = list.filter((p) => p.price <= maxPrice);
     switch (search.sort) {
       case "price-asc":
@@ -98,33 +94,13 @@ function ProductsPage() {
         </div>
       </div>
       <div>
-        <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">Brand</h4>
-        <div className="space-y-1.5">
-          <button
-            onClick={() => update({ brand: undefined })}
-            className={`block w-full rounded-md px-2 py-1 text-left text-sm ${!search.brand ? "bg-amber text-navy" : "hover:bg-secondary"}`}
-          >
-            All
-          </button>
-          {brands.map((b) => (
-            <button
-              key={b}
-              onClick={() => update({ brand: b })}
-              className={`block w-full rounded-md px-2 py-1 text-left text-sm ${search.brand === b ? "bg-amber text-navy" : "hover:bg-secondary"}`}
-            >
-              {b}
-            </button>
-          ))}
-        </div>
-      </div>
-      <div>
         <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-foreground">
           Max Price: Rs.{maxPrice.toLocaleString()}
         </h4>
         <input
           type="range"
           min={500}
-          max={15000}
+            max={20000}
           step={250}
           value={maxPrice}
           onChange={(e) => setMaxPrice(+e.target.value)}
