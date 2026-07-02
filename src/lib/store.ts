@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { SEED_PRODUCTS, type Product } from "./products";
+import { SEED_PRODUCTS, PRODUCTS_VERSION, type Product } from "./products";
 
 const LS = {
   products: "amz:products",
@@ -7,6 +7,7 @@ const LS = {
   wishlist: "amz:wishlist",
   orders: "amz:orders",
   adminAuth: "amz:admin",
+  version: "amz:products_version",
 };
 
 function read<T>(key: string, fallback: T): T {
@@ -56,6 +57,17 @@ function useStored<T>(key: string, fallback: T) {
 // ---------- Products ----------
 export function useProducts() {
   const [products, setProducts] = useStored<Product[]>(LS.products, SEED_PRODUCTS);
+
+  useEffect(() => {
+    const storedVersion = read<number>(LS.version, 0);
+    if (storedVersion < PRODUCTS_VERSION) {
+      write(LS.products, SEED_PRODUCTS);
+      write(LS.version, PRODUCTS_VERSION);
+      setProducts(SEED_PRODUCTS);
+      window.dispatchEvent(new CustomEvent("amz:store", { detail: LS.products }));
+    }
+  }, []);
+
   return { products, setProducts };
 }
 

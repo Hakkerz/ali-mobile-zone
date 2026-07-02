@@ -9,6 +9,8 @@ export type Product = {
   description: string;
 };
 
+export const PRODUCTS_VERSION = 2;
+
 export const CATEGORIES = [
   "Chargers",
   "Data Cables",
@@ -2066,19 +2068,27 @@ export const BEST_SELLER_IDS = new Set([
   "r-010-luxe",
   "samsung-galaxy-buds3",
   "apple-magsafe-battery-pack",
+  "20w-pd-charger",
+  "10000mah-power-bank",
+  "usb-c-to-usb-c-cable",
+  "silicone-case",
+  "9d-tempered-glass",
+  "bluetooth-speaker",
+  "galaxy-buds",
+  "car-phone-holder",
 ]);
 
 export const NEW_IDS = new Set([
-  "apple-airpods-4",
-  "apple-airpods-pro-3",
-  "audionic-coco-c7-mini",
-  "audionic-trance-airbud-850",
-  "r-09-ultra",
-  "r-6065-charger",
-  "r-7145-glaze",
-  "ugreen-magflow-magsafe-power-bank",
-  "r-7095-reactor-x",
-  "r-7085-vox",
+  "airpods-pro",
+  "galaxy-buds",
+  "t800-ultra",
+  "65w-gan-charger",
+  "magsafe-power-bank",
+  "braided-fast-charging-cable",
+  "wireless-charger",
+  "magsafe-case",
+  "bluetooth-fm-transmitter",
+  "mobile-cooling-fan",
 ]);
 
 
