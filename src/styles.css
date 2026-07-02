@@ -438,3 +438,82 @@
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ─── Category Animations ─── */
+@keyframes cat-zap {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-8deg); }
+  75% { transform: scale(1.1) rotate(8deg); }
+}
+.animate-cat-zap { animation: cat-zap 2s ease-in-out infinite; }
+.group:hover .animate-cat-zap { animation: cat-zap 0.6s ease-in-out infinite; }
+
+@keyframes cat-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-12deg); }
+  40% { transform: rotate(12deg); }
+  60% { transform: rotate(-6deg); }
+  80% { transform: rotate(6deg); }
+}
+.animate-cat-wiggle { animation: cat-wiggle 2.5s ease-in-out infinite; }
+.group:hover .animate-cat-wiggle { animation: cat-wiggle 0.5s ease-in-out infinite; }
+
+@keyframes cat-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+.animate-cat-pulse { animation: cat-pulse 2s ease-in-out infinite; }
+.group:hover .animate-cat-pulse { animation: cat-pulse 0.6s ease-in-out infinite; }
+
+@keyframes cat-bounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+  60% { transform: translateY(-3px); }
+}
+.animate-cat-bounce { animation: cat-bounce 2s ease-in-out infinite; }
+.group:hover .animate-cat-bounce { animation: cat-bounce 0.5s ease-in-out infinite; }
+
+@keyframes cat-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.animate-cat-spin { animation: cat-spin 3s ease-in-out infinite; }
+.group:hover .animate-cat-spin { animation: cat-spin 1s ease-in-out infinite; }
+
+@keyframes cat-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-cat-float { animation: cat-float 3s ease-in-out infinite; }
+.group:hover .animate-cat-float { animation: cat-float 0.8s ease-in-out infinite; }
+
+@keyframes cat-shine {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+}
+.animate-cat-shine { animation: cat-shine 2.5s ease-in-out infinite; }
+.group:hover .animate-cat-shine { animation: cat-shine 0.6s ease-in-out infinite; }
+
+@keyframes cat-drive {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(4px) rotate(-3deg); }
+  75% { transform: translateX(-4px) rotate(3deg); }
+}
+.animate-cat-drive { animation: cat-drive 2s ease-in-out infinite; }
+.group:hover .animate-cat-drive { animation: cat-drive 0.4s ease-in-out infinite; }
+
+@keyframes cat-wave {
+  0%, 100% { transform: skewX(0deg); }
+  25% { transform: skewX(-5deg); }
+  75% { transform: skewX(5deg); }
+}
+.animate-cat-wave { animation: cat-wave 2s ease-in-out infinite; }
+.group:hover .animate-cat-wave { animation: cat-wave 0.5s ease-in-out infinite; }
+
+@keyframes cat-glow {
+  0%, 100% { filter: drop-shadow(0 0 4px var(--amber)); }
+  50% { filter: drop-shadow(0 0 12px var(--amber)) drop-shadow(0 0 20px var(--gold)); }
+}
+.animate-cat-glow { animation: cat-glow 2s ease-in-out infinite; }
+.group:hover .animate-cat-glow { animation: cat-glow 0.6s ease-in-out infinite; }

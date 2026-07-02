@@ -177,6 +177,40 @@ const CATEGORY_ICONS: Record<string, typeof Plug> = {
   Accessories: Package2,
 };
 
+const CATEGORY_ANIMS: Record<string, string> = {
+  Chargers: "animate-cat-zap",
+  "Data Cables": "animate-cat-wiggle",
+  "Power Banks": "animate-cat-pulse",
+  Earbuds: "animate-cat-bounce",
+  Headphones: "animate-cat-bounce",
+  "Smart Watches": "animate-cat-spin",
+  "Phone Cases": "animate-cat-float",
+  "Screen Protection": "animate-cat-shine",
+  "Car Accessories": "animate-cat-drive",
+  Audio: "animate-cat-wave",
+  Storage: "animate-cat-float",
+  "Ronin Products": "animate-cat-zap",
+  "Apple Products": "animate-cat-glow",
+  Accessories: "animate-cat-wiggle",
+};
+
+const CATEGORY_BGS: Record<string, string> = [
+  "from-amber/20 via-transparent to-transparent",
+  "from-blue/15 via-transparent to-transparent",
+  "from-green/15 via-transparent to-transparent",
+  "from-purple/15 via-transparent to-transparent",
+  "from-pink/15 via-transparent to-transparent",
+  "from-cyan/15 via-transparent to-transparent",
+  "from-orange/15 via-transparent to-transparent",
+  "from-red/15 via-transparent to-transparent",
+  "from-teal/15 via-transparent to-transparent",
+  "from-indigo/15 via-transparent to-transparent",
+  "from-rose/15 via-transparent to-transparent",
+  "from-yellow/15 via-transparent to-transparent",
+  "from-violet/15 via-transparent to-transparent",
+  "from-lime/15 via-transparent to-transparent",
+];
+
 const CATEGORY_LINKS: Record<string, string> = {
   "Phone Cases": "/tell-us-your-model",
 };
@@ -193,17 +227,20 @@ function CategoriesGrid() {
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
         {CATEGORIES.map((c, idx) => {
           const Icon = CATEGORY_ICONS[c] ?? Package2;
+          const anim = CATEGORY_ANIMS[c] ?? "animate-cat-float";
+          const bg = CATEGORY_BGS[idx % CATEGORY_BGS.length];
           return (
             <Reveal key={c} variant="pop" delay={idx * 80}>
               <Link
                 to={CATEGORY_LINKS[c] ?? "/products"}
                 search={CATEGORY_LINKS[c] ? undefined : ({ category: c } as never)}
-                className="group flex h-full flex-col items-center gap-2 rounded-2xl glass-card p-5 text-center transition-all hover:border-amber/40 hover:-translate-y-1"
+                className="group relative flex h-full flex-col items-center gap-2 overflow-hidden rounded-2xl glass-card p-5 text-center transition-all duration-500 hover:border-amber/40 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]"
               >
-                <div className="grid h-14 w-14 place-items-center rounded-full bg-amber/15 text-amber transition-all duration-300 group-hover:bg-amber group-hover:text-navy group-hover:shadow-[0_0_16px_color-mix(in_oklab,_var(--amber),_40%)]">
-                  <Icon className="h-7 w-7" />
+                <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${bg} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
+                <div className="relative grid h-16 w-16 place-items-center rounded-full bg-amber/15 text-amber transition-all duration-500 group-hover:bg-amber group-hover:text-navy group-hover:shadow-[0_0_24px_color-mix(in_oklab,_var(--amber),_50%)] group-hover:scale-110">
+                  <Icon className={`h-7 w-7 ${anim}`} />
                 </div>
-                <div className="text-xs font-bold text-foreground">{c}</div>
+                <div className="relative text-xs font-bold text-foreground transition-colors duration-300 group-hover:text-amber">{c}</div>
               </Link>
             </Reveal>
           );
