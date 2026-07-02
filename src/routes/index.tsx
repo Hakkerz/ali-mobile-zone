@@ -194,23 +194,6 @@ const CATEGORY_ANIMS: Record<string, string> = {
   Accessories: "animate-cat-wiggle",
 };
 
-const CATEGORY_BGS: Record<string, string> = [
-  "from-amber/20 via-transparent to-transparent",
-  "from-blue/15 via-transparent to-transparent",
-  "from-green/15 via-transparent to-transparent",
-  "from-purple/15 via-transparent to-transparent",
-  "from-pink/15 via-transparent to-transparent",
-  "from-cyan/15 via-transparent to-transparent",
-  "from-orange/15 via-transparent to-transparent",
-  "from-red/15 via-transparent to-transparent",
-  "from-teal/15 via-transparent to-transparent",
-  "from-indigo/15 via-transparent to-transparent",
-  "from-rose/15 via-transparent to-transparent",
-  "from-yellow/15 via-transparent to-transparent",
-  "from-violet/15 via-transparent to-transparent",
-  "from-lime/15 via-transparent to-transparent",
-];
-
 const CATEGORY_LINKS: Record<string, string> = {
   "Phone Cases": "/tell-us-your-model",
 };
@@ -224,27 +207,25 @@ function CategoriesGrid() {
           <p className="mt-1 text-sm text-muted-foreground">Find exactly what you need</p>
         </div>
       </Reveal>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
         {CATEGORIES.map((c, idx) => {
           const img = CATEGORY_IMAGES[c] ?? "";
           const anim = CATEGORY_ANIMS[c] ?? "animate-cat-float";
-          const bg = CATEGORY_BGS[idx % CATEGORY_BGS.length];
           return (
             <Reveal key={c} variant="pop" delay={idx * 80}>
               <Link
                 to={CATEGORY_LINKS[c] ?? "/products"}
                 search={CATEGORY_LINKS[c] ? undefined : ({ category: c } as never)}
-                className="group relative flex h-full flex-col items-center gap-2 overflow-hidden rounded-2xl glass-card p-4 text-center transition-all duration-500 hover:border-amber/40 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]"
+                className="group flex flex-col items-center gap-3 text-center transition-all duration-500 hover:-translate-y-3"
               >
-                <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${bg} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
-                <div className="relative flex h-24 w-full items-center justify-center overflow-hidden rounded-xl bg-white/5">
+                <div className="relative drop-shadow-[0_8px_20px_rgba(0,0,0,0.2)] transition-all duration-500 group-hover:drop-shadow-[0_16px_40px_rgba(0,0,0,0.35)] group-hover:scale-110">
                   <img
                     src={img}
                     alt={c}
-                    className={`h-20 w-20 object-contain ${anim} drop-shadow-lg`}
+                    className={`h-24 w-24 object-contain ${anim}`}
                   />
                 </div>
-                <div className="relative text-xs font-bold text-foreground transition-colors duration-300 group-hover:text-amber">{c}</div>
+                <div className="text-xs font-bold text-foreground/70 transition-all duration-300 group-hover:text-amber group-hover:scale-105">{c}</div>
               </Link>
             </Reveal>
           );
