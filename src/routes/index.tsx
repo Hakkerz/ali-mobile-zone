@@ -160,21 +160,21 @@ function Hero() {
   );
 }
 
-const CATEGORY_ICONS: Record<string, typeof Plug> = {
-  Chargers: Plug,
-  "Data Cables": Cable,
-  "Power Banks": BatteryCharging,
-  Earbuds: Headphones,
-  Headphones: Headphones,
-  "Smart Watches": Watch,
-  "Phone Cases": Smartphone,
-  "Screen Protection": ShieldCheck,
-  "Car Accessories": Car,
-  Audio: Speaker,
-  Storage: HardDrive,
-  "Ronin Products": Package2,
-  "Apple Products": Apple,
-  Accessories: Package2,
+const CATEGORY_IMAGES: Record<string, string> = {
+  Chargers: "https://img.drz.lazcdn.com/static/pk/p/fae6e017931d5f9c55a514b5f3be4b7f.jpg_720x720q80.jpg_.webp",
+  "Data Cables": "https://img.drz.lazcdn.com/g/kf/Seddf59d48f3540d1a4718299b1e34ad7X.png_720x720q80.png_.webp",
+  "Power Banks": "https://img.drz.lazcdn.com/static/pk/p/bbd4ee919eb1ead68122a4b217220353.jpg_720x720q80.jpg_.webp",
+  Earbuds: "https://img.drz.lazcdn.com/static/pk/p/75bc39576bfff6f79c8a02465a84d375.jpg_720x720q80.jpg_.webp",
+  Headphones: "https://img.drz.lazcdn.com/static/pk/p/9c16ad446fe97c4d4ae7d1bf83ab7a4b.jpg_720x720q80.jpg_.webp",
+  "Smart Watches": "https://img.drz.lazcdn.com/g/kf/Sa7184fc13fda46a3b92030daebce3985L.jpg_720x720q80.jpg_.webp",
+  "Phone Cases": "https://img.drz.lazcdn.com/static/pk/p/51df529ab7b26120be1aede8c1f21ba7.jpg_720x720q80.jpg_.webp",
+  "Screen Protection": "https://img.drz.lazcdn.com/static/pk/p/31f073db446e1f70c1afd65e9b63d014.jpg_720x720q80.jpg_.webp",
+  "Car Accessories": "https://img.drz.lazcdn.com/static/pk/p/2631c458e770b97f3b796b6c00d3353d.jpg_720x720q80.jpg_.webp",
+  Audio: "https://img.drz.lazcdn.com/static/pk/p/13065047d94903af1d82bce2ef505a96.jpg_720x720q80.jpg_.webp",
+  Storage: "https://img.drz.lazcdn.com/static/pk/p/81e62354ef75ee3f6cd1befa4f0a881e.jpg_720x720q80.jpg_.webp",
+  "Ronin Products": "https://alimobilezone.com/cdn/shop/files/r007.webp",
+  "Apple Products": "https://alimobilezone.com/cdn/shop/files/download_e0246238-9c70-4ec7-ac81-26f3c8aa8551.jpg",
+  Accessories: "https://alimobilezone.com/cdn/shop/files/download_7d53c4df-153b-4f51-9f34-abe7fbb370c4.jpg",
 };
 
 const CATEGORY_ANIMS: Record<string, string> = {
@@ -226,7 +226,7 @@ function CategoriesGrid() {
       </Reveal>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
         {CATEGORIES.map((c, idx) => {
-          const Icon = CATEGORY_ICONS[c] ?? Package2;
+          const img = CATEGORY_IMAGES[c] ?? "";
           const anim = CATEGORY_ANIMS[c] ?? "animate-cat-float";
           const bg = CATEGORY_BGS[idx % CATEGORY_BGS.length];
           return (
@@ -234,11 +234,15 @@ function CategoriesGrid() {
               <Link
                 to={CATEGORY_LINKS[c] ?? "/products"}
                 search={CATEGORY_LINKS[c] ? undefined : ({ category: c } as never)}
-                className="group relative flex h-full flex-col items-center gap-2 overflow-hidden rounded-2xl glass-card p-5 text-center transition-all duration-500 hover:border-amber/40 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]"
+                className="group relative flex h-full flex-col items-center gap-2 overflow-hidden rounded-2xl glass-card p-4 text-center transition-all duration-500 hover:border-amber/40 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)]"
               >
                 <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${bg} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
-                <div className="relative grid h-16 w-16 place-items-center rounded-full bg-amber/15 text-amber transition-all duration-500 group-hover:bg-amber group-hover:text-navy group-hover:shadow-[0_0_24px_color-mix(in_oklab,_var(--amber),_50%)] group-hover:scale-110">
-                  <Icon className={`h-7 w-7 ${anim}`} />
+                <div className="relative flex h-24 w-full items-center justify-center overflow-hidden rounded-xl bg-white/5">
+                  <img
+                    src={img}
+                    alt={c}
+                    className={`h-20 w-20 object-contain ${anim} drop-shadow-lg`}
+                  />
                 </div>
                 <div className="relative text-xs font-bold text-foreground transition-colors duration-300 group-hover:text-amber">{c}</div>
               </Link>
