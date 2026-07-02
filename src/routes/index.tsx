@@ -125,34 +125,46 @@ function Hero() {
           </div>
         </div>
         <div className="relative hidden md:block">
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-amber/20 via-transparent to-gold/10 blur-3xl" />
-          <div className="relative p-4" style={{ animation: "fade-up 0.8s ease-out both" }}>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { src: "https://img.drz.lazcdn.com/static/pk/p/1398a3ecc3cc5b2c2605f2cdcdab6020.jpg_720x720q80.jpg_.webp", label: "Earbuds", sub: "Wireless Audio" },
-                { src: "https://img.drz.lazcdn.com/g/kf/Sa7184fc13fda46a3b92030daebce3985L.jpg_720x720q80.jpg_.webp", label: "Smart Watch", sub: "T800 Ultra" },
-                { src: "https://img.drz.lazcdn.com/static/pk/p/16aab81eaf42d7da32aa5f7d13f07091.jpg_720x720q80.jpg_.webp", label: "Chargers", sub: "Fast Charging" },
-                { src: "https://img.drz.lazcdn.com/static/pk/p/bb72437261ce32e7070c8e95d229d5ed.jpg_720x720q80.jpg_.webp", label: "Cases", sub: "Phone Protection" },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group aspect-square rounded-2xl border border-amber/15 glass-card p-5 transition-all duration-300 hover:border-amber/40 hover:shadow-[0_0_30px_color-mix(in_oklab,_var(--amber),_20%)] hover:-translate-y-1"
-                  style={{ animation: `fade-up 0.6s ease-out ${idx * 0.1}s both` }}
-                >
-                  <div className="flex h-full flex-col items-center justify-center gap-2">
-                    <img
-                      src={item.src}
-                      alt={item.label}
-                      className="h-24 w-24 rounded-xl object-contain transition-transform duration-300 group-hover:scale-110"
-                      style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.1))" }}
-                    />
-                    <div className="text-center">
-                      <p className="text-xs font-bold text-foreground">{item.label}</p>
-                      <p className="text-[10px] text-muted-foreground">{item.sub}</p>
-                    </div>
+          <div className="absolute inset-0 overflow-hidden rounded-3xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber/[0.08] via-background to-gold/[0.06]" />
+            <div className="absolute -top-8 left-1/2 h-40 w-80 -translate-x-1/2 rounded-full bg-amber/15 blur-3xl" />
+            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-amber/[0.03] to-transparent" />
+          </div>
+          <div className="relative flex items-end justify-center px-4 pb-2 pt-8" style={{ animation: "fade-up 0.8s ease-out both" }}>
+            <div className="flex flex-col items-center gap-0">
+              {/* Shelf 1 — Smart Watch */}
+              <div className="flex flex-col items-center" style={{ animation: "fade-up 0.5s ease-out 0.1s both" }}>
+                <div className="relative z-10 mb-1 h-28 w-28 rounded-2xl bg-white/[0.06] p-3 ring-1 ring-amber/10 backdrop-blur-sm transition-all duration-300 hover:ring-amber/30 hover:scale-105">
+                  <img src="https://img.drz.lazcdn.com/g/kf/Sa7184fc13fda46a3b92030daebce3985L.jpg_720x720q80.jpg_.webp" alt="Smart Watch" className="h-full w-full object-contain drop-shadow-lg" />
+                </div>
+                <div className="relative h-[2px] w-44 bg-gradient-to-r from-transparent via-amber/30 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.12)]" />
+              </div>
+
+              {/* Shelf 2 — Earbuds + Power Bank */}
+              <div className="mt-6 flex flex-col items-center" style={{ animation: "fade-up 0.5s ease-out 0.2s both" }}>
+                <div className="mb-1 flex items-end gap-6">
+                  <div className="relative z-10 h-24 w-24 rounded-2xl bg-white/[0.06] p-3 ring-1 ring-amber/10 backdrop-blur-sm transition-all duration-300 hover:ring-amber/30 hover:scale-105">
+                    <img src="https://img.drz.lazcdn.com/static/pk/p/1398a3ecc3cc5b2c2605f2cdcdab6020.jpg_720x720q80.jpg_.webp" alt="Earbuds" className="h-full w-full object-contain drop-shadow-lg" />
+                  </div>
+                  <div className="relative z-10 h-24 w-24 rounded-2xl bg-white/[0.06] p-3 ring-1 ring-amber/10 backdrop-blur-sm transition-all duration-300 hover:ring-amber/30 hover:scale-105">
+                    <img src="https://img.drz.lazcdn.com/static/pk/p/bbd4ee919eb1ead68122a4b217220353.jpg_720x720q80.jpg_.webp" alt="Power Bank" className="h-full w-full object-contain drop-shadow-lg" />
                   </div>
                 </div>
-              ))}
+                <div className="h-[2px] w-64 bg-gradient-to-r from-transparent via-amber/30 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.12)]" />
+              </div>
+
+              {/* Shelf 3 — Charger + Phone Case */}
+              <div className="mt-6 flex flex-col items-center" style={{ animation: "fade-up 0.5s ease-out 0.3s both" }}>
+                <div className="mb-1 flex items-end gap-6">
+                  <div className="relative z-10 h-24 w-24 rounded-2xl bg-white/[0.06] p-3 ring-1 ring-amber/10 backdrop-blur-sm transition-all duration-300 hover:ring-amber/30 hover:scale-105">
+                    <img src="https://img.drz.lazcdn.com/static/pk/p/16aab81eaf42d7da32aa5f7d13f07091.jpg_720x720q80.jpg_.webp" alt="Wireless Charger" className="h-full w-full object-contain drop-shadow-lg" />
+                  </div>
+                  <div className="relative z-10 h-24 w-24 rounded-2xl bg-white/[0.06] p-3 ring-1 ring-amber/10 backdrop-blur-sm transition-all duration-300 hover:ring-amber/30 hover:scale-105">
+                    <img src="https://img.drz.lazcdn.com/static/pk/p/51df529ab7b26120be1aede8c1f21ba7.jpg_720x720q80.jpg_.webp" alt="Phone Case" className="h-full w-full object-contain drop-shadow-lg" />
+                  </div>
+                </div>
+                <div className="h-[2px] w-64 bg-gradient-to-r from-transparent via-amber/30 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.12)]" />
+              </div>
             </div>
           </div>
         </div>
